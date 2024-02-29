@@ -51,7 +51,33 @@ Blur my shell ==
 Color Picker ==
 Emoji Copy ==
 
-VsCode Extensions ==
+VsCode Extensions
+Auto Rename Tag ==
+Black Formatter ==
+azure App Service ==
+Azure Resources ==
+C/C++ ==
+Code Spell Checker ==
+ESLint ==
+Even Better TOML ==
+Flake8 ==
+Github Actions ==
+Github Copilot ==
+Github Copilot Chat ==
+gitLens ==
+indent-rainbow ==
+isort ==
+Jupyter ==
+Live Server ==
+Mypy Type Checker ==
+Prettier ==
+Pylance ==
+Python ==
+Python Debugger ==
+Remote - SSH ==
+TODO Highlight ==
+TODO tree ==
+Settings Sync is set up
 
 Windows Setup
 Windows == 11
