@@ -3,12 +3,14 @@ Ubuntu == 23.10 <br>
 <br>
 Python == 3.11.0 <br>
 Terminator == 2.1.3 <br>
+Oh-My-Zsh with powerlevel10k <br>
 vscode == 1.88.1 <br>
 Edge Browser == 124.0.2478.67 <br>
 Google Chrome == 124.0.6367.91 <br>
 Firefox == 125.0.2 <br>
 Firefox Developer == <br>
 OBSstudio == 30.0.2 <br>
+VLC Media Player == 3.0.18
 Discord == 0.0.51 <br>
 runescape launcher == 2.2.4 <br>
 Nautilus == 45.rc <br>
@@ -40,8 +42,12 @@ Wine / Winetricks == 8.0.1 <br>
 XTerm == <br>
 Vim == 9.0 <br>
 Vi == 9.0 <br>
+nvim == 9.0 <br>
 Nano == 7.2 <br>
 Gnome Tweaks == 42.beta <br>
+Postman == 10.23.0<br>
+rogauracore == 1.6 <br>
+pip == 23.1.2
 <br>
 Extensions <br>
 Dash-to-Panel == 60 <br>
@@ -97,3 +103,6 @@ Python == 3.11 <br>
 Node == 18.18.0 <br>
 Typescript == 5.1.6 <br>
 C++ == 13.2.0 <br>
+
+venv with python 3.11 in it at home directory
+/home/templates/text_file to make text files with right click
