@@ -97,6 +97,44 @@ Rhino == <br>
 Photoshop == <br>
 Illustrator == <br>
 Indesign == <br>
+choco == <br>
+msi center == <br>
+blender == <br>
+Genshin Impact == <br>
+Visual Studio == 2022 <br>
+Geforce Experience == <br>
+WizTree == <br>
+Sketchup 2024 == <br>
+VRoidStudio == 1.22.0 <br>
+P4v == <br>
+Omniverse == <br>
+Minecraft == <br>
+Focusrite Control == <br>
+FL Studio 20 == <br>
+Komplete Kontrol == <br>
+Kontakt == <br>
+Native Access == <br>
+Davinci Resolve Project Server == <br>
+Atem Software Control == <br>
+Blackmagic Media Express == <br>
+Blackmagic Desktop Video == <br>
+Blackmagic Disk Speed Test == <br>
+Windows Subsystem Linux == <br>
+Musescore == <br>
+PostgreSQL == 13 <br>
+PGAdmin == <br>
+python3 == 3.10.5 (64-bit) & 3.10.11 <br>
+vive hub == <br>
+Vive Console == <br>
+Vulkan SDK == 1.3.204.1 <br>
+WinRAR == <br>
+Steam Link == <br>
+Nvidia Nsight Systems == 2020.3.2 <br>
+Microsoft .NET Runtime == 6.0.31 (x64) <br>
+Logi Tune == 3.6.373 <br>
+Microsoft .NET Framework == 4.8 SDK <br>
+Microsoft SQL Server 2019 LocalDB == <br>
+GitHub CLI == <br>
 <br>
 Languages <br>
 Python == 3.11 <br>
@@ -106,3 +144,4 @@ C++ == 13.2.0 <br>
 
 venv with python 3.11 in it at home directory
 /home/templates/text_file to make text files with right click
+add firefox to startup apps
