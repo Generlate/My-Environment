@@ -164,39 +164,25 @@ add firefox to startup apps
 
 sudo apt update -y && sudo apt upgrade -y
 
-###############################################################################
-
 # 2. Basic developer tools and extra repos
 
-###############################################################################
-sudo apt install -y wget curl gnupg lsb-release software-properties-common apt-transport-https ca-certificates
+sudo apt install -y wget curl /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
 
-###############################################################################
+# 3. Python 3 & pip
 
-# 3. Python 3.11 & pip
+# Ubuntu 24 ships with Python 3 by default, but to ensure:
 
-###############################################################################
-
-# Ubuntu 24 ships with Python 3.11 by default, but to ensure:
-
-sudo apt install -y python3.11 python3.11-venv python3.11-dev
+sudo apt install -y python3 python3-venv python3-dev
 
 # Upgrade pip to specific version
 
-python3.11 -m pip install --upgrade pip==23.1.2
-
-###############################################################################
+sudo apt install -y python3-pip
 
 # 4. Terminator
 
-###############################################################################
 sudo apt install -y terminator
 
-###############################################################################
-
 # 5. Oh-My-Zsh with powerlevel10k
-
-###############################################################################
 
 # Install Zsh
 
@@ -206,43 +192,32 @@ sudo apt install -y zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# note to self: check my current .zshrc and figure out how to add that to this script
+
 # Install powerlevel10k
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
-###############################################################################
-
 # 6. VS Code
 
-###############################################################################
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg > /dev/null
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
 sudo apt update -y
 sudo apt install -y code
 
-###############################################################################
-
 # 7. Edge Browser
 
-###############################################################################
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/msedge.gpg > /dev/null
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/msedge.gpg] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/edge.list
 sudo apt update -y
 sudo apt install -y microsoft-edge-stable
 
-###############################################################################
-
 # 8. Google Chrome
 
-###############################################################################
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
 sudo dpkg -i /tmp/chrome.deb || sudo apt -f install -y
 
-###############################################################################
-
 # 9. Firefox & Firefox Developer Edition
-
-###############################################################################
 
 # Normal Firefox from official repos
 
@@ -250,63 +225,40 @@ sudo apt install -y firefox
 
 # Developer Edition often must be installed manually or via Snap:
 
-sudo snap install firefox --channel=latest/edge --devmode
-
-###############################################################################
+wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.bz2
 
 # 10. OBS Studio
 
-###############################################################################
-sudo apt install -y obs-studio
+# this one's not working
 
-###############################################################################
+sudo apt install -y obs-studio
 
 # 11. VLC Media Player
 
-###############################################################################
 sudo apt install -y vlc
-
-###############################################################################
 
 # 12. Discord
 
-###############################################################################
 wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/discord.deb
 sudo dpkg -i /tmp/discord.deb || sudo apt -f install -y
 
-###############################################################################
-
 # 13. RuneScape Launcher (Snap)
 
-###############################################################################
 sudo snap install runescape --beta
-
-###############################################################################
 
 # 14. Nautilus
 
-###############################################################################
 sudo apt install -y nautilus
-
-###############################################################################
 
 # 15. Blender
 
-###############################################################################
 sudo snap install blender --channel=4.x/stable
-
-###############################################################################
 
 # 16. Htop
 
-###############################################################################
 sudo apt install -y htop
 
-###############################################################################
-
 # 17. Unity Editor
-
-###############################################################################
 
 # Usually installed via Unity Hub (manual .AppImage or official instructions)
 
@@ -316,90 +268,55 @@ wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/Un
 chmod +x $HOME/UnityHub.AppImage
 echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
 
-###############################################################################
-
 # 18. NVIDIA Omniverse Apps (manual / launcher)
 
-###############################################################################
 echo "Please refer to NVIDIA Omniverse documentation for manual installation:
 https://docs.omniverse.nvidia.com"
 
-###############################################################################
-
 # 19. Unreal Engine
 
-###############################################################################
 echo "Unreal Engine 5.3 typically installed via Epic Games or source build.
 See: https://docs.unrealengine.com/5.3"
 
-###############################################################################
-
 # 20. Steam
 
-###############################################################################
 sudo apt install -y steam
-
-###############################################################################
 
 # 21. Lutris
 
-###############################################################################
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt update -y
 sudo apt install -y lutris
 
-###############################################################################
-
 # 22. Google Earth
 
-###############################################################################
 wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb -O /tmp/earth.deb
 sudo dpkg -i /tmp/earth.deb || sudo apt -f install -y
 
-###############################################################################
-
 # 23. MuseScore 2
-
-###############################################################################
 
 # Likely must be installed manually (older version 2.3.2). Use Snap for stable:
 
 sudo snap install musescore --channel=2.x/stable
 
-###############################################################################
-
 # 24. LibreOffice
 
-###############################################################################
 sudo apt install -y libreoffice
-
-###############################################################################
 
 # 25. Figma (unofficial Linux builds or web)
 
-###############################################################################
 sudo snap install figma-linux --beta
-
-###############################################################################
 
 # 26. Vite (via npm)
 
-###############################################################################
 sudo apt install -y nodejs npm
 sudo npm install -g vite
 
-###############################################################################
-
 # 27. MySQL Workbench
 
-###############################################################################
 sudo apt install -y mysql-workbench
 
-###############################################################################
-
 # 28. PGAdmin4
-
-###############################################################################
 
 # Official repository:
 
@@ -408,68 +325,40 @@ sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/ke
 sudo apt update -y
 sudo apt install -y pgadmin4
 
-###############################################################################
-
 # 29. DaVinci Resolve
 
-###############################################################################
 echo "DaVinci Resolve requires manual .deb or .run from https://www.blackmagicdesign.com/support/"
-
-###############################################################################
 
 # 30. Zoom
 
-###############################################################################
 wget https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom.deb
 sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
 
-###############################################################################
-
 # 31. Remmina
 
-###############################################################################
 sudo apt install -y remmina
-
-###############################################################################
 
 # 32. Wine / Winetricks
 
-###############################################################################
 sudo apt install -y wine winetricks
-
-###############################################################################
 
 # 33. XTerm
 
-###############################################################################
 sudo apt install -y xterm
-
-###############################################################################
 
 # 34. Vim / Vi / Neovim / Nano
 
-###############################################################################
 sudo apt install -y vim nano neovim
-
-###############################################################################
 
 # 35. GNOME Tweaks
 
-###############################################################################
 sudo apt install -y gnome-tweaks
-
-###############################################################################
 
 # 36. Postman
 
-###############################################################################
 sudo snap install postman
 
-###############################################################################
-
 # 37. rogauracore
-
-###############################################################################
 
 # Might require manual build from GitHub
 
@@ -480,11 +369,8 @@ make
 sudo make install
 cd -
 
-###############################################################################
-
 # 38. GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
 
-###############################################################################
 echo "Extensions often installed via https://extensions.gnome.org or 'gnome-extensions' CLI.
 Search and install:
 Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy
@@ -518,23 +404,15 @@ echo "All base installations attempted. Manual steps for some tools may still be
 
 sudo apt update -y && sudo apt upgrade -y
 
-###############################################################################
+# 2. Python 3
 
-# 2. Python 3.11
+# Ubuntu 24 typically ships with Python 3 or higher by default
 
-###############################################################################
+# but to ensure we have python3 specifically:
 
-# Ubuntu 24 typically ships with Python 3.11 or higher by default
-
-# but to ensure we have python3.11 specifically:
-
-sudo apt install -y python3.11 python3.11-dev python3.11-venv
-
-###############################################################################
+sudo apt install -y python3 python3-dev python3-venv
 
 # 3. Node.js 18.18.0 (Using NodeSource or nvm)
-
-###############################################################################
 
 # Option A: NodeSource official repo (may not perfectly pin 18.18.0)
 
@@ -557,18 +435,11 @@ nvm install 18.18.0
 nvm use 18.18.0
 nvm alias default 18.18.0
 
-###############################################################################
-
 # 4. TypeScript 5.1.6
 
-###############################################################################
 npm install -g typescript@5.1.6
 
-###############################################################################
-
 # 5. C++ (GCC 13.2.0)
-
-###############################################################################
 
 # Ubuntu 24 should have GCC 13.x in its repos. We install build-essential (includes g++).
 
@@ -854,20 +725,13 @@ Write-Host "Chocolatey is already installed."
 choco upgrade chocolatey -y
 choco feature enable -n=allowGlobalConfirmation
 
-###############################################################################
+# 2. Python 3
 
-# 2. Python 3.11
-
-###############################################################################
 choco install python --version=3.11.4 -y
 
-# (Exact 3.11.x might differ if 3.11.0 specifically is not available in choco repos.)
-
-###############################################################################
+# (Exact 3 might differ if 3 specifically is not available in choco repos.)
 
 # 3. Node.js 18.18.0 (LTS)
-
-###############################################################################
 
 # Attempt pinned version if the package exists in the repo:
 
@@ -875,21 +739,13 @@ choco install nodejs-lts --version=18.18.0 -y
 
 # If that exact version is missing from Chocolatey, it may install the latest 18.x LTS.
 
-###############################################################################
-
 # 4. TypeScript 5.1.6
-
-###############################################################################
 
 # Once Node.js is installed, we can install TypeScript globally:
 
 npm install -g typescript@5.1.6
 
-###############################################################################
-
 # 5. C++ (Visual C++ or MinGW with g++ 13.2.0)
-
-###############################################################################
 
 # On Windows, 'C++' often refers to Visual C++ (via Visual Studio).
 
