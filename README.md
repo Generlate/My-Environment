@@ -256,6 +256,8 @@ sudo snap install blender --channel=4.x/stable
 
 # 16. Htop
 
+# ubuntu comes with htop
+
 sudo apt install -y htop
 
 # 17. Unity Editor
@@ -282,6 +284,8 @@ See: https://docs.unrealengine.com/5.3"
 
 sudo apt install -y steam
 
+# maybe "sudo apt install steam"
+
 # 21. Lutris
 
 sudo add-apt-repository ppa:lutris-team/lutris -y
@@ -297,7 +301,7 @@ sudo dpkg -i /tmp/earth.deb || sudo apt -f install -y
 
 # Likely must be installed manually (older version 2.3.2). Use Snap for stable:
 
-sudo snap install musescore --channel=2.x/stable
+sudo snap install musescore
 
 # 24. LibreOffice
 
@@ -340,6 +344,8 @@ sudo apt install -y remmina
 
 # 32. Wine / Winetricks
 
+# already installed
+
 sudo apt install -y wine winetricks
 
 # 33. XTerm
@@ -347,6 +353,8 @@ sudo apt install -y wine winetricks
 sudo apt install -y xterm
 
 # 34. Vim / Vi / Neovim / Nano
+
+# nano already installed
 
 sudo apt install -y vim nano neovim
 
@@ -360,6 +368,8 @@ sudo snap install postman
 
 # 37. rogauracore
 
+# might not want to have, just for laptop
+
 # Might require manual build from GitHub
 
 sudo apt install -y libusb-1.0-0-dev
@@ -370,6 +380,8 @@ sudo make install
 cd -
 
 # 38. GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
+
+# figure this out
 
 echo "Extensions often installed via https://extensions.gnome.org or 'gnome-extensions' CLI.
 Search and install:
@@ -418,6 +430,8 @@ sudo apt install -y python3 python3-dev python3-venv
 
 # curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 
+# nodejs already installed ealier in the script
+
 # sudo apt install -y nodejs
 
 #
@@ -437,20 +451,7 @@ nvm alias default 18.18.0
 
 # 4. TypeScript 5.1.6
 
-npm install -g typescript@5.1.6
-
-# 5. C++ (GCC 13.2.0)
-
-# Ubuntu 24 should have GCC 13.x in its repos. We install build-essential (includes g++).
-
-sudo apt install -y build-essential
-
-# Confirm version (should be 13.2 or close).
-
-gcc --version
-g++ --version
-
-echo "\nAll requested languages installed on Ubuntu 24!"
+sudo npm install -g typescript
 
 #!/usr/bin/env zsh
 
