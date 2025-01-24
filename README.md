@@ -526,7 +526,9 @@ code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
 echo "VS Code extensions installed/updated. Done!"
 
-# install_windows_env.ps1
+## install_windows_env.ps1
+
+## windows install
 
 # Usage:
 
@@ -550,19 +552,19 @@ Write-Host "Chocolatey is already installed."
 choco upgrade chocolatey -y
 choco feature enable -n=allowGlobalConfirmation
 
-# 3. Example installs for software typically available in Chocolatey
-
 # Blender
 
 choco install blender -y
 
-# Genshin Impact (community package, if present)
+# Genshin Impact
 
-choco install genshin-impact -y
+# figure this out
 
 # Visual Studio 2022 Community
 
 # (If you need Pro/Enterprise, adjust accordingly)
+
+# this one hung but installed?
 
 choco install visualstudio2022community --package-parameters "--allWorkloads --includeRecommended --includeOptional" -y
 
@@ -572,7 +574,19 @@ choco install visualstudio2022community --package-parameters "--allWorkloads --i
 
 # winget install --id NVIDIA.GeForceExperience
 
-choco install nvidia-geforce-experience -y
+# maybe do nvidia app instead
+
+# couldnt figure out how to install the general nvidia app, might be bc it's too new
+
+winget install Nvidia.GeForceNow
+
+# install omniverse
+
+winget install Nvidia.Omniverse
+
+# install CUDA
+
+winget install Nvidia.CUDA
 
 # WizTree
 
@@ -580,51 +594,50 @@ choco install wiztree -y
 
 # VRoid Studio (community might be outdated / partial)
 
+# didn't work
+
 choco install vroid-studio -y
 
 # P4V (Perforce Visual Client)
 
 choco install p4v -y
 
-# Minecraft (this is the Java Edition from Microsoft Store)
+# Minecraft
 
-# Typically installed via Microsoft Store or Winget:
+winget install Mojang.MinecraftLauncher
 
-# winget install --id Mojang.MinecraftWindows
+# audient id44 software
 
-Write-Host "Minecraft is typically installed via the Microsoft Store or winget."
-
-# Focusrite Control (not in official choco)
-
-Write-Host "Download Focusrite Control from official site: https://focusrite.com/en/focusrite-control"
+# figure out how to install
 
 # FL Studio 20
 
-# Typically not on choco. If needed:
-
-Write-Host "Download FL Studio from https://www.image-line.com/"
+# figure out how to install
 
 # Komplete Kontrol / Kontakt / Native Access
 
-Write-Host "Install Native Instruments tools via Native Access: https://www.native-instruments.com/en/specials/native-access/"
+# figure out how to install
 
 # DaVinci Resolve Project Server / ATEM Software Control / Blackmagic apps
 
-Write-Host "Install from official Blackmagic installers: https://www.blackmagicdesign.com/support"
+# figure out how to install
 
 # Windows Subsystem for Linux
 
+# didnt work properly, try on a new install
+
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+wsl --install -d Ubuntu
 
-# Also typically need to install a Linux distro from Microsoft Store, or:
+# wsl ubuntu won't show until system restart
 
-# wsl --install -d Ubuntu
+# wsl ubuntu says additional virtualization settings need to be configured in bios
 
-Write-Host "WSL enabled. Please reboot and install a specific distro if needed."
+# make terminal transparent
 
 # MuseScore
 
-choco install musescore -y
+winget install MuseScore.MuseSore
 
 # PostgreSQL 13
 
@@ -632,26 +645,24 @@ choco install musescore -y
 
 # For version 13, see older package or official installer:
 
-choco install postgresql --version=13.3 -y
+winget install "PostgreSQL 17"
 
 # PGAdmin
 
+# already installed. check if it installs with postgresql
+
+winget install PostgreSQL.pgAdmin
 choco install pgadmin4 -y
 
 # Python 3.x (3.10.5 or 3.10.11) – multiple side-by-side versions are tricky
 
-# Attempt pinned version if available:
+# i think python was installed elsewhere? windows might come with python already.
 
 choco install python --version=3.10.5 -y
-Write-Host "Installing an additional 3.10.11 side-by-side is non-trivial. Consider using virtual environments."
-
-# Vive Hub / Vive Console
-
-Write-Host "Download Vive software from: https://www.vive.com/"
 
 # Vulkan SDK (1.3.204.1)
 
-Write-Host "Download Vulkan SDK from: https://vulkan.lunarg.com/sdk/home"
+winget install -y KhronosGroup.VulkanSDK
 
 # WinRAR
 
@@ -659,33 +670,27 @@ choco install winrar -y
 
 # Steam Link
 
-choco install steamlink -y
+winget install steamlink -y
 
 # Nvidia Nsight Systems 2020.3.2
 
-Write-Host "Download from https://developer.nvidia.com/nsight-systems"
+# figure this one out
 
 # Microsoft .NET Runtime 6.0.31 (x64)
 
-choco install microsoft-net-runtime --version=6.0.31 -y
-
-# Logi Tune 3.6.373
-
-Write-Host "Download from official Logitech site: https://www.logitech.com/"
-
-# May not be on choco; check:
-
-# choco search logi-tune
+# can do easily manually through the start menu
 
 # Microsoft .NET Framework 4.8 SDK
 
-Write-Host "Download from Microsoft: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48"
+# can do easily manually through the start menu
+
+# Logi Tune 3.6.373
+
+choco install logi-tune
 
 # Microsoft SQL Server 2019 LocalDB
 
-choco install sqlserver-2019 -y
-
-# Then configure LocalDB instance
+# check if this is supposed to be MySQL, then figure it out.
 
 # GitHub CLI
 
@@ -698,51 +703,15 @@ Write-Host "=============================================="
 
 # 4. Manual / Third-Party Tools
 
-Write-Host "AutoCAD, SketchUp (Pro/Make/2024), Rhino, Photoshop, Illustrator, InDesign, Omniverse, etc. are typically installed via official installers or subscription websites."
-
-Write-Host "Done. Review any messages above for manual steps."
-
-# install_languages_windows.ps1
-
-#
-
-# Usage (as Administrator in PowerShell):
-
-# Set-ExecutionPolicy Bypass -Scope Process -Force
-
-# .\install_languages_windows.ps1
-
-# 1. Ensure Chocolatey is installed
-
-if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
-Write-Host "Chocolatey not found. Installing..."
-Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-} else {
-Write-Host "Chocolatey is already installed."
-}
-
-choco upgrade chocolatey -y
-choco feature enable -n=allowGlobalConfirmation
-
-# 2. Python 3
-
-choco install python --version=3.11.4 -y
-
-# (Exact 3 might differ if 3 specifically is not available in choco repos.)
+# Write-Host "AutoCAD, SketchUp (Pro/Make/2024), Rhino, Photoshop, Illustrator, InDesign, etc. are typically installed via official installers or subscription websites."
 
 # 3. Node.js 18.18.0 (LTS)
 
-# Attempt pinned version if the package exists in the repo:
-
 choco install nodejs-lts --version=18.18.0 -y
-
-# If that exact version is missing from Chocolatey, it may install the latest 18.x LTS.
 
 # 4. TypeScript 5.1.6
 
-# Once Node.js is installed, we can install TypeScript globally:
+# works but connections to node and npm might be off, check this on a new vm
 
 npm install -g typescript@5.1.6
 
@@ -752,8 +721,18 @@ npm install -g typescript@5.1.6
 
 # For GCC 13.2, we can install 'mingw' if available:
 
+choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart"
+
+# or
+
 choco install mingw --version=13.2.0 -y
 
-# If pinned 13.2.0 is missing, it will install the latest MinGW64 from the repo.
+# add a validation step that checks if all packages are installed and reports which aren't
 
-Write-Host "`nAll requested languages installed on Windows 11 (via Chocolatey)."
+# check versions to see which version and dependencies i should have (ties in to which package manager to use)
+
+# install background image and configure to use
+
+# add Hyprland/Awesomewm
+
+# try installing wsl2 ubuntu first, then installing with apt or something.
