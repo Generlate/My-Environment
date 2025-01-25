@@ -1,22 +1,15 @@
 #!/usr/bin/env zsh
 
-#
+# Run: chmod +x ubuntu_setup.sh
+# or: ./ubuntu_setup.sh
 
-# install_env.zsh: Installs a variety of applications on Ubuntu 24.
-
-# Run with:
-
-# chmod +x install_env.zsh
-
-# ./install_env.zsh
-
-#
 
 # 1. Update & upgrade system
 
 sudo apt update -y && sudo apt upgrade -y
 
 # 2. Basic developer tools and extra repos
+# these might already be installed.. i dont think curl is
 
 sudo apt install -y wget curl /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
 
@@ -33,8 +26,6 @@ sudo apt install -y python3-pip
 # 4. Terminator
 
 sudo apt install -y terminator
-
-# 5. Oh-My-Zsh with powerlevel10k
 
 # Install Zsh
 
