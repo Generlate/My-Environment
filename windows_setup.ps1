@@ -1,11 +1,9 @@
 # configures powershell to allow script execution
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# run
-.\windows_setup.ps1
+# run: .\windows_setup.ps1
 
 # Check for (or install) Chocolatey
-
 if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
 Write-Host "Chocolatey not found. Installing..."
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -53,7 +51,6 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 wsl --install -d Ubuntu
 # wsl ubuntu won't show until system restart
 # wsl ubuntu says additional virtualization settings need to be configured in bios
-
 
 # MuseScore
 winget install MuseScore.MuseSore

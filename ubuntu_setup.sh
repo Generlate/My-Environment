@@ -6,6 +6,15 @@ chmod +x ubuntu_setup.sh
 # Update & upgrade system
 sudo apt update -y && sudo apt upgrade -y
 
+# Install Zsh
+sudo apt install -y zsh
+
+# Install Oh-My-Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# note to self: check my current .zshrc and figure out how to add that to this script
+# Install powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
 # Basic developer tools and extra repos
 # these might already be installed.. i dont think curl is
 sudo apt install -y wget curl /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
@@ -18,15 +27,6 @@ sudo apt install -y python3-pip
 
 # Terminator
 sudo apt install -y terminator
-
-# Install Zsh
-sudo apt install -y zsh
-
-# Install Oh-My-Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# note to self: check my current .zshrc and figure out how to add that to this script
-# Install powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
 # VS Code
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg > /dev/null
@@ -43,7 +43,7 @@ sudo apt install -y microsoft-edge-stable
 # Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
 sudo dpkg -i /tmp/chrome.deb || sudo apt -f install -y
-
+# somewhere around here, all installs failed: list of sources could not be read.
 # Firefox 
 sudo apt install -y firefox
 # Firefox Developer, often must be installed manually or via Snap:
@@ -132,12 +132,12 @@ sudo snap install postman
 # rogauracore
 # might not want to have, just for laptop
 # Might require manual build from GitHub
-sudo apt install -y libusb-1.0-0-dev
-git clone https://github.com/wroberts/rogauracore.git /tmp/rogauracore
-cd /tmp/rogauracore
-make
-sudo make install
-cd -
+# sudo apt install -y libusb-1.0-0-dev
+# git clone https://github.com/wroberts/rogauracore.git /tmp/rogauracore
+# cd /tmp/rogauracore
+# make
+# sudo make install
+# cd -
 
 # Unity Editor
 wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
@@ -188,14 +188,14 @@ code --install-extension ms-python.mypy-type-checker # Mypy Type Checker
 code --install-extension esbenp.prettier-vscode # Prettier
 code --install-extension ms-python.vscode-pylance # Pylance
 code --install-extension ms-python.python # Python
-code --install-extension ms-python.debugger # Python Debugger
+code --install-extension ms-python.debugger # Python Debugger (this one failed)
 code --install-extension ms-vscode-remote.remote-ssh # Remote - SSH
 code --install-extension wayou.vscode-todo-highlight # TODO Highlight
 code --install-extension Gruntfuggly.todo-tree # TODO Tree
 code --install-extension vscodevim.vim # Vim
-code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
+code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet (this one failed)
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
-code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
+code --install-extension gabrielgrinberg.glassit # GlassIt-VSC (this one failed)
 
 # TODO: install nsight, cuda, cuddnn?, tensorrt?, omniverse, native access?, davinci resolve, blackmagic disk speed test, gimp, nvidia app, geforce experience, pycharm, rider, webstorm, unreal engine?, GNU, google earth, pip, nvidia omniverse, unreal engine, runescape (via steam), GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
 
