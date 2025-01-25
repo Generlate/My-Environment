@@ -21,7 +21,6 @@ Write-Host "Chocolatey is already installed."
 
 choco upgrade chocolatey -y
 choco feature enable -n=allowGlobalConfirmation
-
 # Blender
 
 choco install blender -y
@@ -119,7 +118,7 @@ choco install logi-tune
 
 choco install gh -y
 
-# manually install AutoCAD, Sketchup, Rhino, Adobe CC, Illustrator, Indesign, MSI Center, Atem Software Control, Blackmagic Media Express, Blackmagic Desktop Video, Blackmagic Disk Speed Test, vroid studio, genshin impact and hoyoplay, id mixer (audient id44 software), fl studio 20, komplete kontrol, kontakt, native access, nvidia nsight systems 2020.3.2, microsoft .net runtime 6.0.31 (x64), microsoft .net framework 4.8 sdk, davinci resolve project server, atem software control, 
+# manually install AutoCAD, Sketchup, Rhino, Adobe CC, Illustrator, Indesign, MSI Center, Atem Software Control, Blackmagic Media Express, Blackmagic Desktop Video, Blackmagic Disk Speed Test, vroid studio, genshin impact and hoyoplay, id mixer (audient id44 software), fl studio 20, komplete kontrol, kontakt, native access, nvidia nsight systems 2020.3.2, microsoft .net runtime 6.0.31 (x64), microsoft .net framework 4.8 sdk, davinci resolve project server,  
 
 # 3. Node.js 18.18.0 (LTS)
 
@@ -182,7 +181,7 @@ sudo apt update -y
 sudo apt install -y git
 
 # 3. Install VS Code extensions:
-
+# setting sync might auto install extensions
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
 code --install-extension ms-azuretools.vscode-azureappservice # Azure App Service
@@ -209,16 +208,8 @@ code --install-extension ms-vscode-remote.remote-ssh # Remote - SSH
 code --install-extension wayou.vscode-todo-highlight # TODO Highlight
 code --install-extension Gruntfuggly.todo-tree # TODO Tree
 
-# (Settings Sync is built-in to newer VS Code—no extra extension needed)
 
 code --install-extension vscodevim.vim # Vim
-
-# "Vim cheatsheet" might be:
-
-# "shakram02.vim-cheatsheet" or "vscodevim.vim-cheatsheet"
-
-# Adjust if needed:
-
 code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
