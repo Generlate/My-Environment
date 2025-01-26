@@ -4,6 +4,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # run: .\windows_setup.ps1
 
 # Check for (or install) Chocolatey
+# installing choco failed, try again
 if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
 Write-Host "Chocolatey not found. Installing..."
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -21,23 +22,31 @@ choco feature enable -n=allowGlobalConfirmation
 choco install blender -y
 
 # Visual Studio 2022 Community
-# this one hung but installed?
-choco install visualstudio2022community --package-parameters "--allWorkloads --includeRecommended --includeOptional" -y
+choco install visualstudio2022community --package-parameters `
+"--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Workload.Node `
+--add Microsoft.VisualStudio.Workload.Python `
+--add Microsoft.VisualStudio.Workload.NativeDesktop `
+--includeRecommended" -y
+
 
 # GeForce Experience
 # couldnt figure out how to install the general nvidia app, might be bc it's too new
-winget install Nvidia.GeForceNow
+winget install Nvidia.GeForceNow -y
 
 # install omniverse
-winget install Nvidia.Omniverse
+# failed for some reason
+winget install Nvidia.Omniverse -y
 
 # install CUDA
-winget install Nvidia.CUDA
+# failed for some reason
+winget install Nvidia.CUDA -y
 
 # WizTree
 choco install wiztree -y
 
 # P4V (Perforce Visual Client)
+# failed?
 choco install p4v -y
 
 # Minecraft
@@ -45,6 +54,7 @@ winget install Mojang.MinecraftLauncher
 
 # Windows Subsystem for Linux
 # didnt work properly, try on a new install
+# check whether this is wsl or wsl2
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
 # installs ubuntu to wsl2
@@ -65,22 +75,26 @@ choco install pgadmin4 -y
 
 # Python 3
 # i think python was installed elsewhere? windows might come with python already.
-choco install python --version=3.10.5 -y
+choco install -y python --version=3.10.5 
 
 # Vulkan SDK (1.3.204.1)
 winget install -y KhronosGroup.VulkanSDK
 
 # WinRAR
-choco install winrar -y
+choco install -y winrar
 
 # Steam Link
-winget install steamlink -y
+winget install -y steamlink 
 
 # Logi Tune 3.6.373
 choco install logi-tune
 
 # Microsoft SQL Server 2019 LocalDB
 # figure out which one is installed on the desktop pc
+
+# Install/Update Git (System-level)
+winget install --id Git.Git -e --source winget
+
 # GitHub CLI
 choco install gh -y
 
@@ -100,30 +114,13 @@ choco install visualstudio2022buildtools --package-parameters "--add Microsoft.V
 # or
 choco install mingw --version=13.2.0 -y
 
-# add a validation step that checks if all packages are installed and reports which aren't
-# check versions to see which version and dependencies i should have (ties in to which package manager to use)
-# install background image and configure to use
-# add Hyprland/Awesomewm
-# try installing wsl2 ubuntu first, then installing with apt or something.
-# install_vscode_extensions.zsh
-# Run AFTER VS Code is installed:
-# chmod +x install_vscode_extensions.zsh
-# ./install_vscode_extensions.zsh
-# Make sure 'code' command is in PATH
+# code 
+choco install vscode -y
 
-if ! command -v code &> /dev/null; then
-echo "VS Code CLI not found. Please install or verify PATH."
-exit 1
-fi
-
-# Install/Update Git (System-level)
-sudo apt update -y
-
-# (Exact pinned version may not be available in official repos, but try)
-sudo apt install -y git
 
 # Install VS Code extensions:
 # setting sync might auto install extensions
+# failed bc code wasn't installed
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
 code --install-extension ms-azuretools.vscode-azureappservice # Azure App Service
@@ -153,7 +150,74 @@ code --install-extension vscodevim.vim # Vim
 code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
-echo "VS Code extensions installed/updated. Done!"
 
+# add validation and logs
 # decide if i want to use chocolatey or winget
 # make terminal transparent
+# look at other install repos to get ideas
+# add a validation step that checks if all packages are installed and reports which aren't
+# check versions to see which version and dependencies i should have (ties in to which package manager to use)
+# install background image and configure to use
+# add Hyprland/Awesomewm
+# try installing wsl2 ubuntu first, then installing with apt or something.
+
+
+# validation step that checks whether the programs were installed properly
+# List of required CLI-based programs
+$requiredPrograms = @("git", "node", "python", "code")
+
+# Function to check if a CLI command exists
+function Check-Command($command) {
+    if (Get-Command $command -ErrorAction SilentlyContinue) {
+        return $true
+    } else {
+        return $false
+    }
+}
+
+# Arrays to store installed and missing programs
+$installedPrograms = @()
+$missingPrograms = @()
+
+# Check CLI-based programs
+foreach ($program in $requiredPrograms) {
+    if (Check-Command $program) {
+        $installedPrograms += $program
+    } else {
+        $missingPrograms += $program
+    }
+}
+
+# Check installed applications from the Windows Registry
+$requiredApps = @("Google Chrome", "Visual Studio Code", "Python 3.10")
+$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"
+
+foreach ($app in $requiredApps) {
+    if (Get-ItemProperty -Path $registryPath | Where-Object { $_.DisplayName -like "*$app*" }) {
+        $installedPrograms += $app
+    } else {
+        $missingPrograms += $app
+    }
+}
+
+# Output the results
+Write-Host "`n=== Installed Programs ===" -ForegroundColor Green
+if ($installedPrograms.Count -gt 0) {
+    $installedPrograms | ForEach-Object { Write-Host $_ -ForegroundColor Green }
+} else {
+    Write-Host "No programs found." -ForegroundColor Yellow
+}
+
+Write-Host "`n=== Missing Programs ===" -ForegroundColor Red
+if ($missingPrograms.Count -gt 0) {
+    $missingPrograms | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+} else {
+    Write-Host "All required programs are installed!" -ForegroundColor Green
+}
+
+# Exit with error if any programs are missing
+if ($missingPrograms.Count -gt 0) {
+    exit 1
+} else {
+    exit 0
+}

@@ -16,8 +16,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
 # Basic developer tools and extra repos
-# these might already be installed.. i dont think curl is
-sudo apt install -y wget curl /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
+# these might already be installed.. 
+sudo apt install -y /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
 
 # Python 3 & pip
 # Ubuntu 24 ships with Python 3 by default, but to ensure:
@@ -41,31 +41,28 @@ sudo apt update -y
 sudo apt install -y microsoft-edge-stable
 
 # Google Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
-sudo dpkg -i /tmp/chrome.deb || sudo apt -f install -y
-# somewhere around here, all installs failed: list of sources could not be read.
+sudo snap install google-chrome
 # Firefox 
-sudo apt install -y firefox
+sudo snap install -y firefox
 # Firefox Developer, often must be installed manually or via Snap:
+sudo apt install bzip2 -y
 wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.bz2
+tar xjf Firefox-dev.tar.bz2
 
 # OBS Studio
 sudo snap install obs-studio
 
 # VLC Media Player
-sudo apt install -y vlc
+sudo snap install -y vlc
 
 # Discord
-wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/discord.deb
-sudo dpkg -i /tmp/discord.deb || sudo apt -f install -y
+sudo snap install -y discord
 
 # Nautilus
 sudo apt install -y nautilus
 
 # Blender
-sudo snap install blender --channel=4.x/stable
-#or
-sudo snap install blender --classic
+sudo snap install blender 
 
 # Htop
 # ubuntu comes with htop
