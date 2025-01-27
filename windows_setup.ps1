@@ -3,16 +3,10 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # run: .\windows_setup.ps1
 
-# Check for (or install) Chocolatey
-# installing choco failed, try again
-if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
-Write-Host "Chocolatey not found. Installing..."
-Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-} else {
-Write-Host "Chocolatey is already installed."
-}
+# install Chocolatey
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 
 # Upgrade choco & default packages
 choco upgrade chocolatey -y
@@ -32,22 +26,21 @@ choco install visualstudio2022community --package-parameters `
 
 # GeForce Experience
 # couldnt figure out how to install the general nvidia app, might be bc it's too new
+# this through error bc flag might be in the wrong spot
 winget install Nvidia.GeForceNow -y
 
 # install omniverse
-# failed for some reason
-winget install Nvidia.Omniverse -y
+# might need a -y
+winget install Nvidia.Omniverse 
 
 # install CUDA
-# failed for some reason
 winget install Nvidia.CUDA -y
 
 # WizTree
 choco install wiztree -y
 
 # P4V (Perforce Visual Client)
-# failed?
-choco install p4v -y
+winget install Perforce.P4V 
 
 # Minecraft
 winget install Mojang.MinecraftLauncher
@@ -68,22 +61,19 @@ winget install MuseScore.MuseSore
 # PostgreSQL 13
 winget install "PostgreSQL 17"
 
-# PGAdmin
-# already installed. check if it installs with postgresql
-winget install PostgreSQL.pgAdmin
-choco install pgadmin4 -y
-
 # Python 3
-# i think python was installed elsewhere? windows might come with python already.
-choco install -y python --version=3.10.5 
+# asked for reboot
+# python3 not found after install
+choco install -y python3
 
 # Vulkan SDK (1.3.204.1)
 winget install -y KhronosGroup.VulkanSDK
 
 # WinRAR
-choco install -y winrar
+choco install winrar
 
 # Steam Link
+# -y flag not working
 winget install -y steamlink 
 
 # Logi Tune 3.6.373
@@ -96,31 +86,33 @@ choco install logi-tune
 winget install --id Git.Git -e --source winget
 
 # GitHub CLI
+# shell needs to restart to update PATH
 choco install gh -y
 
 # manually install AutoCAD, Sketchup, Rhino, Adobe CC, Illustrator, Indesign, MSI Center, Atem Software Control, Blackmagic Media Express, Blackmagic Desktop Video, Blackmagic Disk Speed Test, vroid studio, genshin impact and hoyoplay, id mixer (audient id44 software), fl studio 20, komplete kontrol, kontakt, native access, nvidia nsight systems 2020.3.2, microsoft .net runtime 6.0.31 (x64), microsoft .net framework 4.8 sdk, davinci resolve project server,  
 
 # Node.js 18.18.0 (LTS)
+# restart to update PATH for Typescript
 choco install nodejs-lts --version=18.18.0 -y
-
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 # TypeScript 5.1.6
-# works but connections to node and npm might be off, check this on a new vm
 npm install -g typescript@5.1.6
 
 # C++ (Visual C++ or MinGW with g++ 13.2.0)
-# On Windows, 'C++' often refers to Visual C++ (via Visual Studio).
-# For GCC 13.2, we can install 'mingw' if available:
-choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart"
+choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart" -y
 # or
-choco install mingw --version=13.2.0 -y
+# choco install mingw --version=13.2.0 -y
+# refreshenv
+# shell must be closed and reopened to update PATH
 
 # code 
+# requires shell restart to update PATH
 choco install vscode -y
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 
 # Install VS Code extensions:
 # setting sync might auto install extensions
-# failed bc code wasn't installed
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
 code --install-extension ms-azuretools.vscode-azureappservice # Azure App Service
@@ -160,11 +152,12 @@ code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 # install background image and configure to use
 # add Hyprland/Awesomewm
 # try installing wsl2 ubuntu first, then installing with apt or something.
+# add log of each install
 
 
 # validation step that checks whether the programs were installed properly
 # List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python", "code")
+$requiredPrograms = @("git", "node", "python", "code", "edge browser", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "sketchup", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2")
 
 # Function to check if a CLI command exists
 function Check-Command($command) {

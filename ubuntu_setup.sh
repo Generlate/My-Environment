@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-
 chmod +x ubuntu_setup.sh
 # run with: ./ubuntu_setup.sh
 
@@ -14,49 +13,45 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # note to self: check my current .zshrc and figure out how to add that to this script
 # Install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+# add "yes" flag to this
 
-# Basic developer tools and extra repos
-# these might already be installed.. 
-sudo apt install -y /_gnupg lsb-release software-properties-common apt-transport-https ca-certificates _/
+# Basic developer tools
+sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
 # Python 3 & pip
-# Ubuntu 24 ships with Python 3 by default, but to ensure:
+# Shell needs restart to update PATH
 sudo apt install -y python3 python3-venv python3-dev
-# Upgrade pip to specific version
+# Upgrade pip 
 sudo apt install -y python3-pip
 
 # Terminator
 sudo apt install -y terminator
 
-# VS Code
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg > /dev/null
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-sudo apt update -y
-sudo apt install -y code
-
 # Edge Browser
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/msedge.gpg > /dev/null
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/msedge.gpg] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/edge.list
-sudo apt update -y
-sudo apt install -y microsoft-edge-stable
-
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft-edge.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
+sudo apt update
+sudo apt install microsoft-edge-stable -y
 # Google Chrome
-sudo snap install google-chrome
+# this errored: unable to locate package google-chrome-stable. check on this
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+sudo apt install google-chrome-stable -y
 # Firefox 
-sudo snap install -y firefox
-# Firefox Developer, often must be installed manually or via Snap:
-sudo apt install bzip2 -y
-wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.bz2
-tar xjf Firefox-dev.tar.bz2
+sudo snap install firefox
+# Firefox Developer
+sudo apt install xz-utils -y && \
+wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.xz && \
+tar -xJf Firefox-dev.tar.xz
 
 # OBS Studio
 sudo snap install obs-studio
 
 # VLC Media Player
-sudo snap install -y vlc
+sudo snap install vlc
 
 # Discord
-sudo snap install -y discord
+sudo snap install discord
 
 # Nautilus
 sudo apt install -y nautilus
@@ -64,38 +59,29 @@ sudo apt install -y nautilus
 # Blender
 sudo snap install blender 
 
-# Htop
-# ubuntu comes with htop
-sudo apt install -y htop
-
 # Steam
-sudo apt install -y steam
+sudo snap install steam
 
 # Lutris
 sudo add-apt-repository ppa:lutris-team/lutris -y
-sudo apt update -y
 sudo apt install -y lutris
 
 # Google Earth
-wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb -O /tmp/earth.deb
-sudo dpkg -i /tmp/earth.deb || sudo apt -f install -y
+# didnt work
+wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
+sudo dpkg -i google-earth-pro-stable_current_amd64.deb
 
 # MuseScore 2
 sudo snap install musescore
 
 # LibreOffice
-sudo apt install -y libreoffice
+sudo snap install libreoffice
 
 # Figma 
 sudo snap install figma-linux --beta
 
-# Vite (via npm)
-sudo apt install -y nodejs npm
-sudo npm install -g vite
-
 # MySQL Workbench
-# didnt work
-sudo apt install -y mysql-workbench
+sudo apt install -y mysql-server
 
 # PGAdmin4
 curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | gpg --dearmor | sudo tee /usr/share/keyrings/pgadmin.gpg > /dev/null
@@ -104,6 +90,7 @@ sudo apt update -y
 sudo apt install -y pgadmin4
 
 # Zoom
+# failed
 wget https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom.deb
 sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
 
@@ -111,7 +98,6 @@ sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
 sudo apt install -y remmina
 
 # Wine / Winetricks
-# already installed
 sudo apt install -y wine winetricks
 
 # XTerm
@@ -137,32 +123,36 @@ sudo snap install postman
 # cd -
 
 # Unity Editor
-wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
-chmod +x $HOME/UnityHub.AppImage
-echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
+# didn't work because no sandbox
+# wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
+# chmod +x $HOME/UnityHub.AppImage
+# echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
 
 # C++
 sudo apt install g++ -y
-sudo apt install build-essential
+sudo apt install build-essential -y
 # cmake
 sudo apt install cmake -y
 # make
-sudo apt install make
+sudo apt install make -y
 # gdb
-sudo apt install gdb
+sudo apt install gdb -y
 
 # Node
 sudo apt install -y nodejs npm
-
+# Vite (via npm)
+sudo npm install -g vite
 # Typescript
 sudo npm install -g typescript
 
-# Python 3
-# Ubuntu 24 typically ships with Python 3 or higher by default
-sudo apt install -y python3 python3-dev python3-venv
+# VS Code
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt update
+sudo apt install -y code
+source ~/.zshrc
 
 # Install VS Code extensions:
-# TODO: check that these extension commands are valid
 # with setting sync, extensions get installed automatically
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
@@ -175,7 +165,6 @@ code --install-extension tamasfe.even-better-toml # Even Better TOML
 code --install-extension ms-python.flake8 # Flake8
 code --install-extension GitHub.vscode-github-actions # Github Actions
 code --install-extension GitHub.copilot # GitHub Copilot
-code --install-extension GitHub.copilot-chat # GitHub Copilot Chat
 code --install-extension eamodio.gitlens # gitLens
 code --install-extension oderwat.indent-rainbow # indent-rainbow
 code --install-extension ms-python.isort # isort
@@ -183,16 +172,13 @@ code --install-extension ms-toolsai.jupyter # Jupyter
 code --install-extension ritwickdey.liveserver # Live Server
 code --install-extension ms-python.mypy-type-checker # Mypy Type Checker
 code --install-extension esbenp.prettier-vscode # Prettier
-code --install-extension ms-python.vscode-pylance # Pylance
-code --install-extension ms-python.python # Python
-code --install-extension ms-python.debugger # Python Debugger (this one failed)
 code --install-extension ms-vscode-remote.remote-ssh # Remote - SSH
 code --install-extension wayou.vscode-todo-highlight # TODO Highlight
 code --install-extension Gruntfuggly.todo-tree # TODO Tree
 code --install-extension vscodevim.vim # Vim
-code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet (this one failed)
+code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet 
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
-code --install-extension gabrielgrinberg.glassit # GlassIt-VSC (this one failed)
+code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 # TODO: install nsight, cuda, cuddnn?, tensorrt?, omniverse, native access?, davinci resolve, blackmagic disk speed test, gimp, nvidia app, geforce experience, pycharm, rider, webstorm, unreal engine?, GNU, google earth, pip, nvidia omniverse, unreal engine, runescape (via steam), GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
 
@@ -205,3 +191,71 @@ code --install-extension gabrielgrinberg.glassit # GlassIt-VSC (this one failed)
 
 # TODO: install background image and configure to use
 # TODO: add Hyprland/Awesomewm
+# TODO: condense redundant commands
+# TODO: add log of each install
+
+
+
+
+# Validation step that checks whether the programs were installed properly
+
+# List of required CLI-based programs
+#!/usr/bin/env zsh
+
+# Validation step that checks whether the programs were installed properly
+
+# List of required CLI-based programs
+required_programs=(
+  git node python3 code terminator zsh
+  chromium firefox firefox-dev
+  obs-studio vlc discord
+  "runescape-launcher" "flstudio" 
+  "atem-software-control" "blackmagic-mediaexpress"
+  "blackmagic-desktop-video" "blackmagic-diskspeed-test"
+  "vroid-studio" "genshin-impact" "hoyoplay"
+  "id-mixer" "komplete-kontrol" kontakt "native-access"
+  "nvidia-nsight-systems"
+)
+
+# Function to check if a program is installed
+check_command() {
+  if command -v "$1" &>/dev/null; then
+    installed_programs+=("$1")
+  else
+    missing_programs+=("$1")
+  fi
+}
+
+# Arrays to store installed and missing programs
+installed_programs=()
+missing_programs=()
+
+# Check CLI-based programs
+echo -e "\nChecking installed programs..."
+for program in "${required_programs[@]}"; do
+  check_command "$program"
+done
+
+# Output results for installed programs
+echo -e "\n\033[1;32m=== Installed Programs ===\033[0m"
+if [ ${#installed_programs[@]} -gt 0 ]; then
+  for installed in "${installed_programs[@]}"; do
+    echo -e "\033[32m✔ $installed\033[0m"
+  done
+else
+  echo -e "\033[33mNo installed programs found.\033[0m"
+fi
+
+# Output results for missing programs
+echo -e "\n\033[1;31m=== Missing Programs ===\033[0m"
+if [ ${#missing_programs[@]} -gt 0 ]; then
+  for missing in "${missing_programs[@]}"; do
+    echo -e "\033[31m✘ $missing\033[0m"
+  done
+  echo -e "\n\033[31mSome programs are missing. Please install them.\033[0m"
+  return 1  # Use return instead of exit to prevent session disconnection
+else
+  echo -e "\n\033[32mAll required programs are installed successfully!\033[0m"
+  return 0  # Use return instead of exit to prevent session disconnection
+fi
+
