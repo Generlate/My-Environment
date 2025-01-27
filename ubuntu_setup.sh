@@ -2,114 +2,115 @@
 chmod +x ubuntu_setup.sh
 # run with: ./ubuntu_setup.sh
 
-# Update & upgrade system
+echo "Update & upgrade system"
+sudo add-apt-repository universe -y
 sudo apt update -y && sudo apt upgrade -y
 
-# Install Zsh
+echo "Install Zsh"
 sudo apt install -y zsh
 
-# Install Oh-My-Zsh
+echo "Install Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # note to self: check my current .zshrc and figure out how to add that to this script
-# Install powerlevel10k
+echo Install "powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 # add "yes" flag to this
 
-# Basic developer tools
+echo "Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
-# Python 3 & pip
+echo "Python 3 & pip"
 # Shell needs restart to update PATH
 sudo apt install -y python3 python3-venv python3-dev
-# Upgrade pip 
+echo "Upgrade pip"
 sudo apt install -y python3-pip
 
-# Terminator
+echo "Terminator"
 sudo apt install -y terminator
 
-# Edge Browser
+echo "Edge Browser"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft-edge.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
 sudo apt update
 sudo apt install microsoft-edge-stable -y
-# Google Chrome
+echo "Google Chrome"
 # this errored: unable to locate package google-chrome-stable. check on this
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt install google-chrome-stable -y
-# Firefox 
+echo "Firefox" 
 sudo snap install firefox
-# Firefox Developer
+echo "Firefox Developer"
 sudo apt install xz-utils -y && \
 wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.xz && \
 tar -xJf Firefox-dev.tar.xz
 
-# OBS Studio
+echo "OBS Studio"
 sudo snap install obs-studio
 
-# VLC Media Player
+echo "VLC Media Player"
 sudo snap install vlc
 
-# Discord
+echo "Discord"
 sudo snap install discord
 
-# Nautilus
+echo "Nautilus"
 sudo apt install -y nautilus
 
-# Blender
+echo "Blender"
 sudo snap install blender 
 
-# Steam
+echo "Steam"
 sudo snap install steam
 
-# Lutris
+echo "Lutris"
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt install -y lutris
 
-# Google Earth
+echo "Google Earth"
 # didnt work
 wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
 sudo dpkg -i google-earth-pro-stable_current_amd64.deb
 
-# MuseScore 2
+echo "MuseScore 2"
 sudo snap install musescore
 
-# LibreOffice
+echo "LibreOffice"
 sudo snap install libreoffice
 
-# Figma 
+echo "Figma" 
 sudo snap install figma-linux --beta
 
-# MySQL Workbench
+echo "MySQL Workbench"
 sudo apt install -y mysql-server
 
-# PGAdmin4
+echo "PGAdmin4"
 curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | gpg --dearmor | sudo tee /usr/share/keyrings/pgadmin.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
 sudo apt update -y
 sudo apt install -y pgadmin4
 
-# Zoom
+echo "Zoom"
 # failed
 wget https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom.deb
 sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
 
-# Remmina
+echo "Remmina"
 sudo apt install -y remmina
 
-# Wine / Winetricks
+echo "Wine / Winetricks"
 sudo apt install -y wine winetricks
 
-# XTerm
+echo "XTerm"
 sudo apt install -y xterm
 
-# Neovim
+echo "Neovim"
 sudo apt install -y neovim
 
-# GNOME Tweaks
+echo "GNOME Tweaks"
 sudo apt install -y gnome-tweaks
 
-# Postman
+echo "Postman"
 sudo snap install postman
 
 # rogauracore
@@ -122,37 +123,37 @@ sudo snap install postman
 # sudo make install
 # cd -
 
-# Unity Editor
+echo "Unity Editor"
 # didn't work because no sandbox
 # wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
 # chmod +x $HOME/UnityHub.AppImage
 # echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
 
-# C++
+echo "C++"
 sudo apt install g++ -y
 sudo apt install build-essential -y
-# cmake
+echo "cmake"
 sudo apt install cmake -y
-# make
+echo "make"
 sudo apt install make -y
-# gdb
+echo "gdb"
 sudo apt install gdb -y
 
-# Node
+echo "Node"
 sudo apt install -y nodejs npm
-# Vite (via npm)
+echo "Vite (via npm)"
 sudo npm install -g vite
-# Typescript
+echo "Typescript"
 sudo npm install -g typescript
 
-# VS Code
+echo "VS Code"
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install -y code
 source ~/.zshrc
 
-# Install VS Code extensions:
+echo "Install VS Code extensions:"
 # with setting sync, extensions get installed automatically
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
@@ -182,13 +183,10 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 # TODO: install nsight, cuda, cuddnn?, tensorrt?, omniverse, native access?, davinci resolve, blackmagic disk speed test, gimp, nvidia app, geforce experience, pycharm, rider, webstorm, unreal engine?, GNU, google earth, pip, nvidia omniverse, unreal engine, runescape (via steam), GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
 
-
+# TODO: add step that git clones the gh repo
 # TODO: make terminal transparent
-
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
-
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
-
 # TODO: install background image and configure to use
 # TODO: add Hyprland/Awesomewm
 # TODO: condense redundant commands
@@ -197,24 +195,17 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 
 
-# Validation step that checks whether the programs were installed properly
-
-# List of required CLI-based programs
-#!/usr/bin/env zsh
-
-# Validation step that checks whether the programs were installed properly
-
-# List of required CLI-based programs
+echo "Validation step that checks whether the programs were installed properly"
 required_programs=(
-  git node python3 code terminator zsh
+  git node python3 code terminator zsh Oh-My-Zsh "edge browser" 
   chromium firefox firefox-dev
   obs-studio vlc discord
-  "runescape-launcher" "flstudio" 
+  "runescape-launcher" "flstudio" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip dash-to-panel arcmenu "blur my shell" "color picker" "emoji copy" "vscode extensions" git gh typescript c++ g++ 
   "atem-software-control" "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
   "vroid-studio" "genshin-impact" "hoyoplay"
   "id-mixer" "komplete-kontrol" kontakt "native-access"
-  "nvidia-nsight-systems"
+  "nvidia-nsight-systems" 
 )
 
 # Function to check if a program is installed

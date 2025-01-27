@@ -143,21 +143,23 @@ code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
-# add validation and logs
-# decide if i want to use chocolatey or winget
-# make terminal transparent
-# look at other install repos to get ideas
-# add a validation step that checks if all packages are installed and reports which aren't
-# check versions to see which version and dependencies i should have (ties in to which package manager to use)
-# install background image and configure to use
-# add Hyprland/Awesomewm
-# try installing wsl2 ubuntu first, then installing with apt or something.
-# add log of each install
+# TODO: add step that git clones the gh repo
+# TODO: add validation and logs
+# TODO: decide if i want to use chocolatey or winget
+# TODO: make terminal transparent
+# TODO: look at other install repos to get ideas
+# TODO: add a validation step that checks if all packages are installed and reports which aren't
+# TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
+# TODO: install background image and configure to use
+# TODO: add Hyprland/Awesomewm
+# TODO: try installing wsl2 ubuntu first, then installing with apt or something.
+# TODO: add log of each install
+# TODO: get zsh/oh-my-zsh/powerlevel10k to look how it does on my laptop
 
 
 # validation step that checks whether the programs were installed properly
 # List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python", "code", "edge browser", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "sketchup", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2")
+$requiredPrograms = @("git", "node", "python3", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim?", "vi?", "nvim?", "nano?", "postman", "pip", "typescript", "c++") 
 
 # Function to check if a CLI command exists
 function Check-Command($command) {
