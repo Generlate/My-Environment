@@ -6,111 +6,111 @@ echo "Update & upgrade system"
 sudo add-apt-repository universe -y
 sudo apt update -y && sudo apt upgrade -y
 
-echo "Install Zsh"
+echo "Installing Zsh"
 sudo apt install -y zsh
 
-echo "Install Oh-My-Zsh"
+echo "Installing Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # note to self: check my current .zshrc and figure out how to add that to this script
-echo Install "powerlevel10k"
+echo "Installing powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 # add "yes" flag to this
 
-echo "Basic developer tools"
+echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
-echo "Python 3 & pip"
+echo "Installing Python 3 & pip"
 # Shell needs restart to update PATH
 sudo apt install -y python3 python3-venv python3-dev
-echo "Upgrade pip"
+echo "Upgrading pip"
 sudo apt install -y python3-pip
 
-echo "Terminator"
+echo "Installing Terminator"
 sudo apt install -y terminator
 
-echo "Edge Browser"
+echo "Installing Edge Browser"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft-edge.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
 sudo apt update
 sudo apt install microsoft-edge-stable -y
-echo "Google Chrome"
+echo "Installing Google Chrome"
 # this errored: unable to locate package google-chrome-stable. check on this
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt install google-chrome-stable -y
-echo "Firefox" 
+echo "Installing Firefox" 
 sudo snap install firefox
-echo "Firefox Developer"
+echo "Installing Firefox Developer"
 sudo apt install xz-utils -y && \
 wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O Firefox-dev.tar.xz && \
 tar -xJf Firefox-dev.tar.xz
 
-echo "OBS Studio"
+echo "Installing OBS Studio"
 sudo snap install obs-studio
 
-echo "VLC Media Player"
+echo "Installing VLC Media Player"
 sudo snap install vlc
 
-echo "Discord"
+echo "Installing Discord"
 sudo snap install discord
 
-echo "Nautilus"
+echo "Installing Nautilus"
 sudo apt install -y nautilus
 
-echo "Blender"
+echo "Installing Blender"
 sudo snap install blender 
 
-echo "Steam"
+echo "Installing Steam"
 sudo snap install steam
 
-echo "Lutris"
+echo "Installing Lutris"
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt install -y lutris
 
-echo "Google Earth"
+echo "Installing Google Earth"
 # didnt work
 wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
 sudo dpkg -i google-earth-pro-stable_current_amd64.deb
 
-echo "MuseScore 2"
+echo "Installing MuseScore 2"
 sudo snap install musescore
 
-echo "LibreOffice"
+echo "Installing LibreOffice"
 sudo snap install libreoffice
 
-echo "Figma" 
+echo "Installing Figma" 
 sudo snap install figma-linux --beta
 
-echo "MySQL Workbench"
+echo "Installing MySQL Workbench"
 sudo apt install -y mysql-server
 
-echo "PGAdmin4"
+echo "Installing PGAdmin4"
 curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | gpg --dearmor | sudo tee /usr/share/keyrings/pgadmin.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
 sudo apt update -y
 sudo apt install -y pgadmin4
 
-echo "Zoom"
+echo "Installing Zoom"
 # failed
 wget https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom.deb
 sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
 
-echo "Remmina"
+echo "Installing Remmina"
 sudo apt install -y remmina
 
-echo "Wine / Winetricks"
+echo "Installing Wine / Winetricks"
 sudo apt install -y wine winetricks
 
-echo "XTerm"
+echo "Installing XTerm"
 sudo apt install -y xterm
 
-echo "Neovim"
+echo "Installing Neovim"
 sudo apt install -y neovim
 
-echo "GNOME Tweaks"
+echo "Installing GNOME Tweaks"
 sudo apt install -y gnome-tweaks
 
-echo "Postman"
+echo "Installing Postman"
 sudo snap install postman
 
 # rogauracore
@@ -123,37 +123,37 @@ sudo snap install postman
 # sudo make install
 # cd -
 
-echo "Unity Editor"
+echo "Installing Unity Editor"
 # didn't work because no sandbox
 # wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
 # chmod +x $HOME/UnityHub.AppImage
 # echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
 
-echo "C++"
+echo "Installing C++"
 sudo apt install g++ -y
 sudo apt install build-essential -y
-echo "cmake"
+echo "Installing cmake"
 sudo apt install cmake -y
-echo "make"
+echo "Installing make"
 sudo apt install make -y
-echo "gdb"
+echo "Installing gdb"
 sudo apt install gdb -y
 
-echo "Node"
+echo "Installing Node"
 sudo apt install -y nodejs npm
-echo "Vite (via npm)"
+echo "Installing Vite (via npm)"
 sudo npm install -g vite
-echo "Typescript"
+echo "Installing Typescript"
 sudo npm install -g typescript
 
-echo "VS Code"
+echo "Installing VS Code"
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install -y code
 source ~/.zshrc
 
-echo "Install VS Code extensions:"
+echo "Installing VS Code extensions:"
 # with setting sync, extensions get installed automatically
 code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
 code --install-extension ms-python.black-formatter # Black Formatter
@@ -181,7 +181,7 @@ code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
-# TODO: install nsight, cuda, cuddnn?, tensorrt?, omniverse, native access?, davinci resolve, blackmagic disk speed test, gimp, nvidia app, geforce experience, pycharm, rider, webstorm, unreal engine?, GNU, google earth, pip, nvidia omniverse, unreal engine, runescape (via steam), GNOME Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)
+
 
 # TODO: add step that git clones the gh repo
 # TODO: make terminal transparent
@@ -195,17 +195,17 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 
 
-echo "Validation step that checks whether the programs were installed properly"
+echo "Validating whether the programs were installed properly"
 required_programs=(
   git node python3 code terminator zsh Oh-My-Zsh "edge browser" 
   chromium firefox firefox-dev
   obs-studio vlc discord
-  "runescape-launcher" "flstudio" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip dash-to-panel arcmenu "blur my shell" "color picker" "emoji copy" "vscode extensions" git gh typescript c++ g++ 
+  "runescape-launcher" "flstudio" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ 
   "atem-software-control" "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
   "vroid-studio" "genshin-impact" "hoyoplay"
   "id-mixer" "komplete-kontrol" kontakt "native-access"
-  "nvidia-nsight-systems" 
+  nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
 )
 
 # Function to check if a program is installed
