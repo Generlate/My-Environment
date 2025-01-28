@@ -3,6 +3,7 @@ Ubuntu == 23.10 <br>
 Python == 3.11.0 <br>
 Terminator == 2.1.3 <br>
 vscode == 1.88.1 <br>
+zsh = <br>
 Oh-My-Zsh with powerlevel10k <br>
 Edge Browser == 124.0.2478.67 <br>
 Google Chrome == 124.0.6367.91 <br>
@@ -47,6 +48,18 @@ Gnome Tweaks == 42.beta <br>
 Postman == 10.23.0<br>
 rogauracore == 1.6 <br>
 pip == 23.1.2
+gh == <br>
+typescript == <br>
+nsight == <br>
+CUDA == <br>
+cuDNN == <br>
+tensorRT == <br>
+Gimp == <br>
+nvidia app == <br>
+gefore experience == <br>
+pycharm == <br>
+rider == <br>
+webstorm == <br>
 <br>
 Extensions <br>
 Dash-to-Panel == 60 <br>
@@ -76,7 +89,7 @@ Live Server == 5.7.9 <br>
 Mypy Type Checker == 2023.6.0 <br>
 Prettier == 10.4.0 <br>
 Pylance == 2024.4.1 <br>
-Python == 2024.4.1 <br>
+Python == 3.11 <br>
 Python Debugger == 2024.4.0 <br>
 Remote - SSH == 0.110.1 <br>
 TODO Highlight == 1.0.5 <br>
@@ -87,6 +100,7 @@ Vim cheatsheet == 0.0.1 <br>
 Github Theme == 6.3.4 <br>
 GlassIt-VSC == 0.2.6 <br>
 Git == 2.40.1 <br>
+Node == <br>
 
 <br>
 <br>
@@ -127,6 +141,7 @@ Vite == <br>
 MySQL workbench == 8.0.36 <br>
 PGAdmin4 == <br>
 Davinci Resolve == <br>
+Davinci Resolve Project Server == <br>
 Zoom == <br>
 Vim == 9.0 <br>
 Vi == 9.0 <br>
@@ -134,6 +149,16 @@ nvim == 9.0 <br>
 Nano == 7.2 <br>
 Postman == 10.23.0<br>
 pip == 23.1.2
+msi center == <br>
+vroid studio == <br>
+hoyoplay (genshin impact) == <br>
+id mixer == <br>
+fl studio == 20 <br>
+komplete kontrol == <br>
+kontakt == <br>
+native access == <br>
+nvidia nsight == <br>
+kit == <br>
 <br>
 VsCode Extensions <br>
 Auto Rename Tag == 0.1.10 <br>
@@ -156,7 +181,6 @@ Live Server == 5.7.9 <br>
 Mypy Type Checker == 2023.6.0 <br>
 Prettier == 10.4.0 <br>
 Pylance == 2024.4.1 <br>
-Python == 2024.4.1 <br>
 Python Debugger == 2024.4.0 <br>
 Remote - SSH == 0.110.1 <br>
 TODO Highlight == 1.0.5 <br>
@@ -167,6 +191,7 @@ Vim cheatsheet == 0.0.1 <br>
 Github Theme == 6.3.4 <br>
 GlassIt-VSC == 0.2.6 <br>
 Git == 2.40.1 <br>
+.NET == <br>
 <br>
 Languages <br>
 Python == 3.11 <br>

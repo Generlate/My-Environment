@@ -1,12 +1,10 @@
 # configures powershell to allow script execution
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-
 # run: .\windows_setup.ps1
 
 Write-Host "Installing Chocolatey"
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
 
 Write-Host "Upgrading choco and default packages"
 choco upgrade chocolatey -y
@@ -22,7 +20,6 @@ choco install visualstudio2022community --package-parameters `
 --add Microsoft.VisualStudio.Workload.Python `
 --add Microsoft.VisualStudio.Workload.NativeDesktop `
 --includeRecommended" -y
-
 
 Write-Host "Installing GeForce Experience"
 # couldnt figure out how to install the general nvidia app, might be bc it's too new
@@ -142,6 +139,7 @@ code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
+# TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: add step that git clones the gh repo
 # TODO: add validation and logs
 # TODO: decide if i want to use chocolatey or winget
@@ -158,7 +156,7 @@ code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
 Write-Host "Validating installation of required programs"
 # List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python3", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim?", "vi?", "nvim?", "nano?", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server") 
+$requiredPrograms = @("git", "node", "python3", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim", "vi", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server") 
 
 # Function to check if a CLI command exists
 function Check-Command($command) {

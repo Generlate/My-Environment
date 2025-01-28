@@ -183,6 +183,7 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 
 
+# TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: add step that git clones the gh repo
 # TODO: make terminal transparent
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
@@ -200,11 +201,9 @@ required_programs=(
   git node python3 code terminator zsh Oh-My-Zsh "edge browser" 
   chromium firefox firefox-dev
   obs-studio vlc discord
-  "runescape-launcher" "flstudio" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ 
-  "atem-software-control" "blackmagic-mediaexpress"
+  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ 
+  "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
-  "vroid-studio" "genshin-impact" "hoyoplay"
-  "id-mixer" "komplete-kontrol" kontakt "native-access"
   nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
 )
 
