@@ -60,6 +60,32 @@ sudo apt install -y nautilus
 echo "Installing Blender"
 sudo snap install blender 
 
+
+echo "Installing unreal engine"
+
+echo "Installing gh"
+
+echo "Installing nsight"
+
+echo "Installing cuda"
+
+echo "Installing cudnn"
+
+echo "Installing gimp"
+
+echo "Installing geforce experience"
+
+echo "Installing pycharm"
+
+echo "Installing rider"
+
+echo "Installing webstorm"
+
+echo "Installing cmake"
+
+echo "Installing git"
+
+
 echo "Installing Steam"
 sudo snap install steam
 

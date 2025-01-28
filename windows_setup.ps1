@@ -53,7 +53,7 @@ wsl --install -d Ubuntu
 # wsl ubuntu says additional virtualization settings need to be configured in bios
 
 Write-Host "Installing MuseScore"
-winget install MuseScore.MuseSore
+winget install MuseScore.MuseScore
 
 Write-Host "Installing PostgreSQL 13"
 winget install "PostgreSQL 17"
