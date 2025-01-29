@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
+
 chmod +x ubuntu_setup.sh
-# run with: ./ubuntu_setup.sh
 
 echo "Update & upgrade system"
 sudo add-apt-repository universe -y
@@ -9,12 +9,23 @@ sudo apt update -y && sudo apt upgrade -y
 echo "Installing Zsh"
 sudo apt install -y zsh
 
+# echo "Installing Oh-My-Zsh"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# note to self: check my current .zshrc and figure out how to add that to this script
+# echo "Installing powerlevel10k"
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+# add "yes" flag to this?
+
+
+
 echo "Installing Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # note to self: check my current .zshrc and figure out how to add that to this script
 echo "Installing powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-# add "yes" flag to this?
+# Source the .zshrc file to apply changes
+echo "Sourcing .zshrc to apply changes..."
+source ~/.zshrc
 
 echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
@@ -35,6 +46,8 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge sta
 sudo apt update
 sudo apt install microsoft-edge-stable -y
 echo "Installing Google Chrome"
+# check this isnt a 3rd party repo
+# check it's installed (it errored: couldn't find)
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt install google-chrome-stable -y
@@ -60,14 +73,11 @@ sudo apt install -y nautilus
 echo "Installing Blender"
 sudo snap install blender 
 
-
-
 echo "Installing gh"
 sudo apt install gh -y
 
 echo "Installing gimp"
 sudo snap install gimp
-
 
 echo "Installing pycharm"
 sudo snap install pycharm --classic
@@ -79,11 +89,11 @@ echo "Installing webstorm"
 sudo snap install webstorm --classic
 
 echo "Installing cmake"
-sudo apt install cmake
+# check if -y works
+sudo apt install -y cmake 
 
 echo "Installing git"
 sudo apt install git
-
 
 echo "Installing Steam"
 sudo snap install steam
@@ -91,7 +101,6 @@ sudo snap install steam
 echo "Installing Lutris"
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt install -y lutris
-
 
 echo "Installing MuseScore 2"
 sudo snap install musescore
@@ -129,9 +138,29 @@ sudo apt install -y gnome-tweaks
 echo "Installing Postman"
 sudo snap install postman
 
-echo "Installing Hyprland"
+# or do echo "Installing AwesomeWM"
+# do hyprland later
+#echo "Installing Hyprland"
+#sudo apt update && sudo apt install -y \
+#    build-essential cmake meson ninja-build pkg-config \
+#    libxcb1-dev libxcb-damage0-dev libxcb-composite0-dev \
+#    libxcb-ewmh-dev libxcb-xfixes0-dev libxcb-shape0-dev \
+#    libxcb-xinput-dev libxkbcommon-dev wayland-protocols \
+#    libpixman-1-dev libudev-dev libseat-dev libwayland-dev \
+#    libegl-dev libgles2-mesa-dev libxcb-present-dev \
+#    libvulkan-dev vulkan-validationlayers \
+#    libxcb-render0-dev libxcb-randr0-dev \
+#    libxcb-xinerama0-dev libxcb-icccm4-dev \
+#    libxcb-keysyms1-dev libxcb-cursor-dev \
+#    libxcb-res0-dev libpam0g-dev
+#sudo add-apt-repository ppa:umang/wayland-hyprland
+#sudo apt update && sudo apt install -y hyprland
+#mkdir -p ~/.config/hypr
+#cp /usr/share/hyprland/examples/hyprland.conf ~/.config/hypr/hyprland.conf
+#echo "exec Hyprland" > ~/.xinitrc
+#startx
 
-echo "Installing AwesomeWM"
+
 
 # rogauracore
 # might not want to have, just for laptop
@@ -143,11 +172,7 @@ echo "Installing AwesomeWM"
 # sudo make install
 # cd -
 
-echo "Installing Unity Editor"
-# didn't work because no sandbox
-# wget https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage -O $HOME/UnityHub.AppImage
-# chmod +x $HOME/UnityHub.AppImage
-# echo "Unity Hub downloaded. Run ~/UnityHub.AppImage to install the Unity editor."
+
 
 echo "Installing C++"
 sudo apt install g++ -y
@@ -211,11 +236,10 @@ code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
-# manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn
+# manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
 
 # TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
-# TODO: add step that git clones the gh repo
 # TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
@@ -225,56 +249,4 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
 
 
-echo "Validating whether the programs were installed properly"
-required_programs=(
-  git node python3 code terminator zsh Oh-My-Zsh "edge browser" 
-  chromium firefox firefox-dev
-  obs-studio vlc discord
-  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ 
-  "blackmagic-mediaexpress"
-  "blackmagic-desktop-video" "blackmagic-diskspeed-test"
-  nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
-)
-
-# Function to check if a program is installed
-check_command() {
-  if command -v "$1" &>/dev/null; then
-    installed_programs+=("$1")
-  else
-    missing_programs+=("$1")
-  fi
-}
-
-# Arrays to store installed and missing programs
-installed_programs=()
-missing_programs=()
-
-# Check CLI-based programs
-echo -e "\nChecking installed programs..."
-for program in "${required_programs[@]}"; do
-  check_command "$program"
-done
-
-# Output results for installed programs
-echo -e "\n\033[1;32m=== Installed Programs ===\033[0m"
-if [ ${#installed_programs[@]} -gt 0 ]; then
-  for installed in "${installed_programs[@]}"; do
-    echo -e "\033[32m✔ $installed\033[0m"
-  done
-else
-  echo -e "\033[33mNo installed programs found.\033[0m"
-fi
-
-# Output results for missing programs
-echo -e "\n\033[1;31m=== Missing Programs ===\033[0m"
-if [ ${#missing_programs[@]} -gt 0 ]; then
-  for missing in "${missing_programs[@]}"; do
-    echo -e "\033[31m✘ $missing\033[0m"
-  done
-  echo -e "\n\033[31mSome programs are missing. Please install them.\033[0m"
-  return 1  # Use return instead of exit to prevent session disconnection
-else
-  echo -e "\n\033[32mAll required programs are installed successfully!\033[0m"
-  return 0  # Use return instead of exit to prevent session disconnection
-fi
-
+./ubuntu_programs_validator.sh
