@@ -21,17 +21,18 @@ choco install visualstudio2022community --package-parameters `
 --add Microsoft.VisualStudio.Workload.NativeDesktop `
 --includeRecommended" -y
 
+# manually install the Nvidia App
+
 Write-Host "Installing GeForce Experience"
-# couldnt figure out how to install the general nvidia app, might be bc it's too new
-# this through error bc flag might be in the wrong spot
-winget install Nvidia.GeForceNow -y
+winget install Nvidia.GeForceNow
 
 Write-Host "Installing Omniverse"
-# might need a -y
 winget install Nvidia.Omniverse 
 
+Write-Host "Installing omniverse code"
+
 Write-Host "Installing CUDA"
-winget install Nvidia.CUDA -y
+winget install Nvidia.CUDA
 
 Write-Host "Installing WizTree"
 choco install wiztree -y
@@ -42,13 +43,13 @@ winget install Perforce.P4V
 Write-Host "Installing Minecraft"
 winget install Mojang.MinecraftLauncher
 
-Write-Host "Installing Windows Subsystem for Linux"
+# Write-Host "Installing Windows Subsystem for Linux"
 # didnt work properly, try on a new install
 # check whether this is wsl or wsl2
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+# dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
-Write-Host "Installing Ubuntu to wsl2"
-wsl --install -d Ubuntu
+# Write-Host "Installing Ubuntu to wsl2"
+# wsl --install -d Ubuntu
 # wsl ubuntu won't show until system restart
 # wsl ubuntu says additional virtualization settings need to be configured in bios
 
@@ -56,54 +57,72 @@ Write-Host "Installing MuseScore"
 winget install MuseScore.MuseScore
 
 
-Write-Host "Installing autocad"
-Write-Host "Installing illustrator"
-Write-Host "Installing photoshop"
-Write-Host "Installing indesign"
-Write-Host "Installing sketchup"
-Write-Host "Installing rhino"
+
+
+
+
 Write-Host "Installing msi center"
-Write-Host "Installing atem software control"
-Write-Host "Installing blackmagic media express"
-Write-Host "Installing blackmagic desktop video"
-Write-Host "Installing blackmagic disk speed test"
+winget install "msi center" --accept-package-agreements --accept-source-agreements
+
+
+# manually install atem software control, blackmagic media express, blackmagic desktop video, blackmagic disk speed test, hoyoplay, id mixer, fl studio 20, komplete kontrol, kontakt, native access, Kit, davinci  resolve, runescape, davinci resolve project server
+
+
 Write-Host "Installing vroid studio"
-Write-Host "Installing hoyoplay"
-Write-Host "Installing id mixer"
-Write-Host "Installing fl studio 20"
-Write-Host "Installing komplete kontrol"
-Write-Host "Installing kontakt"
-Write-Host "Installing native access"
-Write-Host "Installing nvidia nsight"
-Write-Host "Installing omniverse"
-Write-Host "Installing omniverse code"
-Write-Host "Installing Kit"
+winget install "VRoid Studio"
+
+
 Write-Host "Installing unreal engine"
+winget install EpicGames.EpicGamesLauncher
+
+
 Write-Host "Installing steam"
+choco install steam
+
+
+Write-Host "Installing discord"
+winget install Discord.Discord
+
+
 Write-Host "Installing google earth"
+winget install Google.EarthPro
+
+
 Write-Host "Installing figma"
+winget install figma
+
+
 Write-Host "Installing vite"
+npm install vite
+
 Write-Host "Installing mysql workbench"
-Write-Host "Installing pgadmin 4"
-Write-Host "Installing davinci resolve"
+winget install Oracle.MySQL
+
+
 Write-Host "Installing zoom"
+winget install Zoom.Zoom
+
+
 Write-Host "Installing vim"
-Write-Host "Installing vi"
+winget install vim.vim
+
+
 Write-Host "Installing nvim"
-Write-Host "Installing nano"
+winget install Neovim.Neovim
+
 Write-Host "Installing postman"
-Write-Host "Installing pip"
-Write-Host "Installing runescape launcher"
+winget install Postman.Postman
+
+
 Write-Host "Installing .NET"
-Write-Host "Installing davinci resolve project server"
+winget install --id Microsoft.DotNet.SDK.8
+
 
 Write-Host "Installing PostgreSQL 13"
 winget install "PostgreSQL 17"
 
 Write-Host "Installing Python3"
-# asked for reboot
-# python3 not found after install
-choco install -y python3
+choco install -y python3; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 Write-Host "Installing Vulkan SDK"
 winget install -y KhronosGroup.VulkanSDK
@@ -112,8 +131,7 @@ Write-Host "Installing WinRAR"
 choco install winrar
 
 Write-Host "Installing Steam Link"
-# -y flag not working
-winget install -y steamlink 
+winget install steamlink 
 
 Write-Host "Installing Logi Tune"
 choco install logi-tune
@@ -125,28 +143,21 @@ Write-Host "Installing Git"
 winget install --id Git.Git -e --source winget
 
 Write-Host "Installing GitHub CLI"
-# shell needs to restart to update PATH
-choco install gh -y
+choco install gh -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 
 Write-Host "Installing Node.js"
-# restart to update PATH for Typescript
-choco install nodejs-lts --version=18.18.0 -y
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-Write-Host "Installing TypeScript"
-npm install -g typescript@5.1.6
+choco install nodejs-lts --version=18.18.0 -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine) 
+Write-Host "Installing TypeScript"; npm install -g typescript@5.1.6
 
 Write-Host "Installing C++"
 choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart" -y
 # or
 # choco install mingw --version=13.2.0 -y
-# refreshenv
-# shell must be closed and reopened to update PATH
+# $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 Write-Host "Installing Visual Studio Code"
-# requires shell restart to update PATH
-choco install vscode -y
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+choco install vscode -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 
 Write-Host "Installing Visual Studio Code Extensions"
@@ -181,6 +192,15 @@ code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
+
+Write-Host "Manually Install:"
+Write-Host "Installing autocad"
+Write-Host "Installing illustrator"
+Write-Host "Installing photoshop"
+Write-Host "Installing indesign"
+Write-Host "Installing sketchup"
+Write-Host "Installing rhino"
+
 # TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: add step that git clones the gh repo
 # TODO: add validation and logs
@@ -198,7 +218,7 @@ code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
 
 Write-Host "Validating installation of required programs"
 # List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python3", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "nvidia nsight systems 2020.3.2", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim", "vi", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server") 
+$requiredPrograms = @("git", "node", "python3", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server") 
 
 # Function to check if a CLI command exists
 function Check-Command($command) {

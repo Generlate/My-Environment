@@ -14,14 +14,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # note to self: check my current .zshrc and figure out how to add that to this script
 echo "Installing powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-# add "yes" flag to this
+# add "yes" flag to this?
 
 echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
 echo "Installing Python 3 & pip"
-# Shell needs restart to update PATH
 sudo apt install -y python3 python3-venv python3-dev
+echo "Sourcing .zshrc to update the system PATH..."
+source ~/.zshrc
 echo "Upgrading pip"
 sudo apt install -y python3-pip
 
@@ -34,7 +35,6 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge sta
 sudo apt update
 sudo apt install microsoft-edge-stable -y
 echo "Installing Google Chrome"
-# this errored: unable to locate package google-chrome-stable. check on this
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt install google-chrome-stable -y
@@ -61,29 +61,28 @@ echo "Installing Blender"
 sudo snap install blender 
 
 
-echo "Installing unreal engine"
 
 echo "Installing gh"
-
-echo "Installing nsight"
-
-echo "Installing cuda"
-
-echo "Installing cudnn"
+sudo apt install gh -y
 
 echo "Installing gimp"
+sudo snap install gimp
 
-echo "Installing geforce experience"
 
 echo "Installing pycharm"
+sudo snap install pycharm --classic
 
 echo "Installing rider"
+sudo snap install rider --classic
 
 echo "Installing webstorm"
+sudo snap install webstorm --classic
 
 echo "Installing cmake"
+sudo apt install cmake
 
 echo "Installing git"
+sudo apt install git
 
 
 echo "Installing Steam"
@@ -93,10 +92,6 @@ echo "Installing Lutris"
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt install -y lutris
 
-echo "Installing Google Earth"
-# didnt work
-wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
-sudo dpkg -i google-earth-pro-stable_current_amd64.deb
 
 echo "Installing MuseScore 2"
 sudo snap install musescore
@@ -116,11 +111,6 @@ sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/ke
 sudo apt update -y
 sudo apt install -y pgadmin4
 
-echo "Installing Zoom"
-# failed
-wget https://zoom.us/client/latest/zoom_amd64.deb -O /tmp/zoom.deb
-sudo dpkg -i /tmp/zoom.deb || sudo apt -f install -y
-
 echo "Installing Remmina"
 sudo apt install -y remmina
 
@@ -138,6 +128,10 @@ sudo apt install -y gnome-tweaks
 
 echo "Installing Postman"
 sudo snap install postman
+
+echo "Installing Hyprland"
+
+echo "Installing AwesomeWM"
 
 # rogauracore
 # might not want to have, just for laptop
@@ -173,6 +167,16 @@ echo "Installing Typescript"
 sudo npm install -g typescript
 
 echo "Installing VS Code"
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+rm -f packages.microsoft.gpg
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code 
+
+
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
@@ -207,17 +211,16 @@ code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
+# manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn
 
 
 # TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: add step that git clones the gh repo
-# TODO: make terminal transparent
+# TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
 # TODO: install background image and configure to use
-# TODO: add Hyprland/Awesomewm
 # TODO: condense redundant commands
-# TODO: add log of each install
 
 
 

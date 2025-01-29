@@ -144,7 +144,6 @@ Davinci Resolve == <br>
 Davinci Resolve Project Server == <br>
 zoom == <br>
 Vim == 9.0 <br>
-Vi == 9.0 <br>
 nvim == 9.0 <br>
 Nano == 7.2 <br>
 Postman == 10.23.0<br>
