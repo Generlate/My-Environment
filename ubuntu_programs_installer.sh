@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-chmod +x ubuntu_setup.sh
+chmod +x ubuntu_programs_installer.sh
 
 echo "Update & upgrade system"
 sudo add-apt-repository universe -y
