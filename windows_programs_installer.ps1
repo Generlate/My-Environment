@@ -78,11 +78,11 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 Write-Host "Installing omniverse code"
 
+
 Write-Host "Installing CUDA"
-# couldn't find execution file
 winget install Nvidia.CUDA
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\MuseScore 4\bin"
-[System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+
+
 
 
 Write-Host "Installing WizTree"
@@ -108,7 +108,6 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 # Write-Host "Installing Windows Subsystem for Linux"
 # didnt work properly, try on a new install
-# check whether this is wsl or wsl2
 # dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
 # Write-Host "Installing Ubuntu to wsl2"
@@ -184,9 +183,8 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 Write-Host "Installing vite"
-# couldn't find execution file
 npm install vite
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\MuseScore 4\bin"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\node_modules\vite\bin"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 
@@ -235,9 +233,8 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 Write-Host "Installing PostgreSQL 13"
-# couldn't find execution file
 winget install "PostgreSQL 17"
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\MuseScore 4\bin"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\PostgreSQL\17\pgAdmin 4\runtime"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 
@@ -261,7 +258,7 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 Write-Host "Installing Steam Link"
 # couldn't find execution file
 winget install steamlink 
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\MuseScore 4\bin"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam Link"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 

@@ -5,11 +5,13 @@ required_programs=(
   git nodejs python3 code terminator zsh Oh-My-Zsh microsoft-edge-stable 
   google-chrome-stable firefox firefox-dev
   obs-studio vlc discord
-  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore" libreoffice figma-linux mysql-server pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi neovim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ gdb
+  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "musescore" libreoffice figma-linux mysql-server pgadmin4 "davinci resolve" remmina wine winetricks xterm vim vi neovim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ gdb
   "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
-  nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm-community rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
+  cuDNN tensorRT gimp "nvidia app?" pycharm-community rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
 )
+
+# manually geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
 # Function to check if a program is installed
 check_command() {

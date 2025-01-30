@@ -9,21 +9,12 @@ sudo apt update -y && sudo apt upgrade -y
 echo "Installing Zsh"
 sudo apt install -y zsh
 
-# echo "Installing Oh-My-Zsh"
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# note to self: check my current .zshrc and figure out how to add that to this script
-# echo "Installing powerlevel10k"
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-# add "yes" flag to this?
 
 echo "Installing Oh-My-Zsh"
-RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # note to self: check my current .zshrc and figure out how to add that to this script
 echo "Installing powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-# Source the .zshrc file to apply changes
-echo "Sourcing .zshrc to apply changes..."
-source ~/.zshrc
 
 echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
@@ -44,8 +35,6 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge sta
 sudo apt update
 sudo apt install microsoft-edge-stable -y
 echo "Installing Google Chrome"
-# check this isnt a 3rd party repo
-# check it's installed (it errored: couldn't find)
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt install google-chrome-stable -y
@@ -225,9 +214,46 @@ code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet
 code --install-extension GitHub.github-vscode-theme # GitHub Theme
 code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 
+
+echo "Installing Gnome-Extensions"
+#echo "Installing ArcMenu"
+#sudo apt update && sudo apt install gnome-shell-extensions gnome-shell-extension-prefs gnome-shell-extension-manager chrome-gnome-shell unzip wget
+#gnome-extensions install arcmenu@arcmenu.com
+#gnome-extensions enable arcmenu@arcmenu.com
+
+#echo "Installing Blur My Shell"
+
+
+#echo "Installing Dash-To-Panel"
+
+
+#echo "Installing Color Picker"
+
+
+#echo "Installing Emoji Copy"
+
+
+
+
+# or try this
+extensions=(
+  "arcmenu@arcmenu.com"
+  "dash-to-panel@jderose9.github.com"
+  "blur-my-shell@aunetx"
+  "color-picker@tuberry"
+  "emoji-copy@felipeftn"
+)
+
+for ext in "${extensions[@]}"; do
+  gnome-extensions install "$ext"
+  gnome-extensions enable "$ext"
+done
+
+
+
 # manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
-
+# TODO: figure out gnome extensions
 # TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
