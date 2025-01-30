@@ -2,13 +2,13 @@
 chmod +x ubuntu_programs_validator.sh
 echo "Validating whether the programs were installed properly"
 required_programs=(
-  git node python3 code terminator zsh Oh-My-Zsh "edge browser" 
-  chromium firefox firefox-dev
+  git nodejs python3 code terminator zsh Oh-My-Zsh microsoft-edge-stable 
+  google-chrome-stable firefox firefox-dev
   obs-studio vlc discord
-  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore 2" libreoffice figma "mysql workbench" pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi nvim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ 
+  "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "google earth" "musescore" libreoffice figma-linux mysql-server pgadmin4 "davinci resolve" zoom remmina wine winetricks xterm vim vi neovim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ gdb
   "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
-  nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
+  nsight CUDA cuDNN tensorRT gimp "nvidia app?" "geforce experience" pycharm-community rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
 )
 
 # Function to check if a program is installed
@@ -47,9 +47,9 @@ if [ ${#missing_programs[@]} -gt 0 ]; then
     echo -e "\033[31m✘ $missing\033[0m"
   done
   echo -e "\n\033[31mSome programs are missing. Please install them.\033[0m"
-  return 1  # Use return instead of exit to prevent session disconnection
+  return 1  
 else
   echo -e "\n\033[32mAll required programs are installed successfully!\033[0m"
-  return 0  # Use return instead of exit to prevent session disconnection
+  return 0  
 fi
 

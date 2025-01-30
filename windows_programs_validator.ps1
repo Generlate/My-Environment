@@ -1,6 +1,6 @@
 Write-Host "Validating installation of required programs"
 # List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "vroid studio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "omniverse", "omniverse code", "Kit", "unreal engine", "steam", "google earth", "musescore 2", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server") 
+$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "VRoidStudio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "Nvidia.Omniverse", "omniverse code", "Kit", "EpicGamesLauncher", "steam", "googleearth", "MuseScore.MuseScore", "figma", "vite", "mysql workbench", "pgadmin 4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server", "blender", "devenv", "Nvidia.GeForceNow", "Nvidia.CUDA", "wiztree", "Perforce.P4V", "MinecraftLauncher", "figma", "logitune") 
 
 # Function to check if a CLI command exists
 function Check-Command($command) {
@@ -57,3 +57,6 @@ if ($missingPrograms.Count -gt 0) {
 } else {
     exit 0
 }
+
+
+# why is there required apps and required programs?

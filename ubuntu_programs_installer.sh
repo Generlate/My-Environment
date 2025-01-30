@@ -16,8 +16,6 @@ sudo apt install -y zsh
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 # add "yes" flag to this?
 
-
-
 echo "Installing Oh-My-Zsh"
 RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # note to self: check my current .zshrc and figure out how to add that to this script
@@ -80,7 +78,7 @@ echo "Installing gimp"
 sudo snap install gimp
 
 echo "Installing pycharm"
-sudo snap install pycharm --classic
+sudo snap install pycharm-community --classic
 
 echo "Installing rider"
 sudo snap install rider --classic
@@ -89,7 +87,6 @@ echo "Installing webstorm"
 sudo snap install webstorm --classic
 
 echo "Installing cmake"
-# check if -y works
 sudo apt install -y cmake 
 
 echo "Installing git"
@@ -102,7 +99,7 @@ echo "Installing Lutris"
 sudo add-apt-repository ppa:lutris-team/lutris -y
 sudo apt install -y lutris
 
-echo "Installing MuseScore 2"
+echo "Installing MuseScore"
 sudo snap install musescore
 
 echo "Installing LibreOffice"
@@ -172,8 +169,6 @@ sudo snap install postman
 # sudo make install
 # cd -
 
-
-
 echo "Installing C++"
 sudo apt install g++ -y
 sudo apt install build-essential -y
@@ -200,12 +195,6 @@ rm -f packages.microsoft.gpg
 sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code 
-
-
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update
-sudo apt install -y code
 source ~/.zshrc
 
 echo "Installing VS Code extensions:"
@@ -245,6 +234,7 @@ code --install-extension s-nlf-fh.glassit # GlassIt-VSC
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
 # TODO: install background image and configure to use
 # TODO: condense redundant commands
+# TODO: check security of all of these repos
 
 
 
