@@ -214,3 +214,5 @@ cpp == 13.2.0 <br>
 
 venv with python 3.11 in it at home directory
 /home/templates/text_file to make text files with right click
+
+[comment]: TODO: add backend + frontend server config

@@ -18,15 +18,24 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zs
 echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
+echo "Installing Terminator"
+sudo apt install -y terminator
+
+echo "Installing Nautilus"
+sudo apt install -y nautilus
+
+echo "Installing git"
+sudo apt install git
+
+echo "Installing gh"
+sudo apt install gh -y
+
 echo "Installing Python 3 & pip"
 sudo apt install -y python3 python3-venv python3-dev
 echo "Sourcing .zshrc to update the system PATH..."
 source ~/.zshrc
 echo "Upgrading pip"
 sudo apt install -y python3-pip
-
-echo "Installing Terminator"
-sudo apt install -y terminator
 
 echo "Installing Edge Browser"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft-edge.gpg > /dev/null
@@ -53,14 +62,8 @@ sudo snap install vlc
 echo "Installing Discord"
 sudo snap install discord
 
-echo "Installing Nautilus"
-sudo apt install -y nautilus
-
 echo "Installing Blender"
 sudo snap install blender 
-
-echo "Installing gh"
-sudo apt install gh -y
 
 echo "Installing gimp"
 sudo snap install gimp
@@ -76,9 +79,6 @@ sudo snap install webstorm --classic
 
 echo "Installing cmake"
 sudo apt install -y cmake 
-
-echo "Installing git"
-sudo apt install git
 
 echo "Installing Steam"
 sudo snap install steam
@@ -144,8 +144,6 @@ sudo snap install postman
 #cp /usr/share/hyprland/examples/hyprland.conf ~/.config/hypr/hyprland.conf
 #echo "exec Hyprland" > ~/.xinitrc
 #startx
-
-
 
 # rogauracore
 # might not want to have, just for laptop
@@ -225,18 +223,29 @@ done
 #echo "Installing Color Picker"
 #echo "Installing Emoji Copy"
 
-
 # manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
+Write-Host "Setting Wallpaper"
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/My-Environment/background.jpg"
+
+# Modify GNOME Terminal settings for transparency
+echo "Turning GNOME Terminal window transparent"
+
+# Get the current profile ID
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+
+# Define the desired transparency settings
+desiredOpacity=0.75
+
+# Set the transparency settings
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/Terminal/Legacy/Profiles:/:$profile/" use-transparent-background true
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/Terminal/Legacy/Profiles:/:$profile/" background-transparency-percent $((100 - $desiredOpacity * 100))
+
+echo "GNOME Terminal window modification completed. Please restart GNOME Terminal to apply the changes."
+
 # TODO: figure out gnome extensions
-# TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
-# TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks
+# TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks/extensions
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
-# TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
-# TODO: install background image and configure to use
-# TODO: check security of all of these repos
-
-
-
+# TODO: configure shell to not have a line limit
 
 ./ubuntu_programs_validator.sh
