@@ -10,19 +10,13 @@ choco upgrade chocolatey -y
 choco feature enable -n=allowGlobalConfirmation
 
 Write-Host "Installing Blender"
-# blender wasn't properly installed. try adding path in a new install
-choco install blender -y
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\MuseScore 4\bin"
+winget install BlenderFoundation.Blender
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Blender Foundation\Blender 4.3"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 
 Write-Host "Installing Visual Studio 2022 Community"
-choco install visualstudio2022community --package-parameters `
-"--add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Workload.Node `
---add Microsoft.VisualStudio.Workload.Python `
---add Microsoft.VisualStudio.Workload.NativeDesktop `
---includeRecommended" -y
+winget install Microsoft.VisualStudio.2022.Community
 $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
@@ -37,32 +31,34 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + "C:
 
 
 Write-Host "Installing chrome"
-choco install googlechrome
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
+winget install Google.Chrome
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Google\Chrome\Application"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 Write-Host "Installing firefox"
 winget install Mozilla.Firefox
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Mozilla Firefox"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 Write-Host "Installing firefox-dev"
 winget install Mozilla.Firefox.DeveloperEdition
 
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Firefox Developer Edition"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 Write-Host "Installing obs studio"
+winget install OBSProject.OBSStudio
 choco install obs-studio
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\obs-studio\bin\64bit"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 Write-Host "Installing vlc"
-winget install VidoLAN.VLC
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
+winget install VideoLAN.VLC
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\VideoLAN\VLC"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 Write-Host "Installing runescape"
+# failed to install
 winget install Jagex.Runescape
 $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Local\Programs\omniverse-launcher"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
@@ -76,9 +72,6 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 
-Write-Host "Installing omniverse code"
-
-
 Write-Host "Installing CUDA"
 winget install Nvidia.CUDA
 
@@ -86,7 +79,7 @@ winget install Nvidia.CUDA
 
 
 Write-Host "Installing WizTree"
-choco install wiztree -y
+winget install WizTree
 $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\WizTree"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
@@ -135,7 +128,7 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 
-# manually install atem software control, blackmagic media express, blackmagic desktop video, blackmagic disk speed test, hoyoplay, id mixer, fl studio 20, komplete kontrol, kontakt, native access, Kit, davinci  resolve, runescape, davinci resolve project server
+# manually install atem software control, blackmagic media express, blackmagic desktop video, blackmagic disk speed test, hoyoplay, id mixer, fl studio 20, komplete kontrol, kontakt, native access, Kit, davinci  resolve, runescape, davinci resolve project server, Zbrush, houdini, nuke, blackmagic fusion, 
 
 
 Write-Host "Installing vroid studio"
@@ -153,7 +146,7 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 Write-Host "Installing steam"
-choco install steam
+winget install Valve.Steam
 $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files (x86)\Steam"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
@@ -250,8 +243,8 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 Write-Host "Installing WinRAR"
-choco install winrar
-$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\WinRAR"
+winget install WinRAR
+$newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Users\austencabret\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\WinRAR"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 
@@ -263,7 +256,7 @@ $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C
 
 
 Write-Host "Installing Logi Tune"
-choco install logi-tune
+winget install Logitech.LogiTune
 $newPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Program Files\Logitech\LogiTune"
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
@@ -278,15 +271,15 @@ winget install --id Git.Git -e --source winget
 
 
 Write-Host "Installing GitHub CLI"
-choco install gh -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+winget install GitHub.cli ; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 
 Write-Host "Installing Node.js"
-choco install nodejs-lts --version=18.18.0 -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine) 
+winget install OpenJS.NodeJS ; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine) 
 Write-Host "Installing TypeScript"; npm install -g typescript@5.1.6
 
 Write-Host "Installing C++"
-choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart" -y
+winget install Microsoft.VisualStudio.2022.BuildTools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --quiet --norestart" 
 # or
 # choco install mingw --version=13.2.0 -y
 # $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
@@ -294,55 +287,154 @@ choco install visualstudio2022buildtools --package-parameters "--add Microsoft.V
 
 
 Write-Host "Installing Visual Studio Code"
-choco install vscode -y; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+winget install Microsoft.VisualStudioCode ; $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 
 
 Write-Host "Installing Visual Studio Code Extensions"
 # setting sync might auto install extensions
-code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
-code --install-extension ms-python.black-formatter # Black Formatter
-code --install-extension ms-azuretools.vscode-azureappservice # Azure App Service
-code --install-extension msazurermtools.azurerm-vscode-tools # Azure Resources (ARM Tools)
-code --install-extension ms-vscode.cpptools # C/C++ Intellisense
-code --install-extension streetsidesoftware.code-spell-checker # Code Spell Checker
-code --install-extension dbaeumer.vscode-eslint # ESLint
-code --install-extension tamasfe.even-better-toml # Even Better TOML
-code --install-extension ms-python.flake8 # Flake8
-code --install-extension GitHub.vscode-github-actions # Github Actions
-code --install-extension GitHub.copilot # GitHub Copilot
-code --install-extension GitHub.copilot-chat # GitHub Copilot Chat
-code --install-extension eamodio.gitlens # gitLens
-code --install-extension oderwat.indent-rainbow # indent-rainbow
-code --install-extension ms-python.isort # isort
-code --install-extension ms-toolsai.jupyter # Jupyter
-code --install-extension ritwickdey.liveserver # Live Server
-code --install-extension ms-python.mypy-type-checker # Mypy Type Checker
-code --install-extension esbenp.prettier-vscode # Prettier
-code --install-extension ms-python.vscode-pylance # Pylance
-code --install-extension ms-python.python # Python
-code --install-extension ms-python.debugger # Python Debugger
-code --install-extension ms-vscode-remote.remote-ssh # Remote - SSH
-code --install-extension wayou.vscode-todo-highlight # TODO Highlight
-code --install-extension Gruntfuggly.todo-tree # TODO Tree
-code --install-extension vscodevim.vim # Vim
-code --install-extension shakram02.vim-cheatsheet # Vim cheatsheet
-code --install-extension GitHub.github-vscode-theme # GitHub Theme
-code --install-extension gabrielgrinberg.glassit # GlassIt-VSC
+$vscodeExtensions = @(
+    "formulahendry.auto-rename-tag", # Auto Rename Tag
+    "ms-python.black-formatter", # Black Formatter
+    "ms-azuretools.vscode-azureappservice", # Azure App Service
+    "msazurermtools.azurerm-vscode-tools", # Azure Resources (ARM Tools)
+    "ms-vscode.cpptools", # C/C++ Intellisense
+    "streetsidesoftware.code-spell-checker", # Code Spell Checker
+    "dbaeumer.vscode-eslint", # ESLint
+    "tamasfe.even-better-toml", # Even Better TOML
+    "ms-python.flake8", # Flake8
+    "GitHub.vscode-github-actions", # Github Actions
+    "GitHub.copilot", # GitHub Copilot
+    "GitHub.copilot-chat", # GitHub Copilot Chat
+    "eamodio.gitlens", # gitLens
+    "oderwat.indent-rainbow", # indent-rainbow
+    "ms-python.isort", # isort
+    "ms-toolsai.jupyter", # Jupyter
+    "ritwickdey.liveserver", # Live Server
+    "ms-python.mypy-type-checker", # Mypy Type Checker
+    "esbenp.prettier-vscode", # Prettier
+    "ms-python.vscode-pylance", # Pylance
+    "ms-python.python", # Python
+    "ms-python.debugger", # Python Debugger
+    "ms-vscode-remote.remote-ssh", # Remote - SSH
+    "wayou.vscode-todo-highlight", # TODO Highlight
+    "Gruntfuggly.todo-tree", # TODO Tree
+    "vscodevim.vim", # Vim
+    "shakram02.vim-cheatsheet", # Vim cheatsheet
+    "GitHub.github-vscode-theme", # GitHub Theme
+    "gabrielgrinberg.glassit" # GlassIt-VSC
+)
 
+foreach ($extension in $vscodeExtensions) {
+    code --install-extension $extension
+}
 
 Write-Host "Manually Install: autocad, illustrator, photoshop, indesign, sketchup, rhino"
 
+Write-Host "Turning Powershell Window transparent"
+# Define the path to the Windows Terminal settings JSON file
+$settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+# Read the current settings
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+
+# Define the desired transparency settings
+$desiredOpacity = 0.75
+$useAcrylic = $true
+
+# Find the PowerShell profile and update its settings
+foreach ($profile in $settings.profiles.list) {
+    if ($profile.name -eq "Windows PowerShell" -or $profile.name -eq "PowerShell") {
+        $profile.acrylicOpacity = $desiredOpacity
+        $profile.useAcrylic = $useAcrylic
+    }
+}
+
+# Convert the settings back to JSON and save the file
+$settings | ConvertTo-Json -Depth 32 | Set-Content -Path $settingsPath
+
+Write-Host "PowerShell window modification completed. Please restart Windows Terminal to apply the changes."
+
+
+
+Write-Host "Setting Wallpaper"
+
+
+
+
+
+
+# Define the path to the .jpg file
+$backgroundImagePath = ".\background.jpg"
+
+# Ensure the file exists
+if (-Not (Test-Path $backgroundImagePath)) {
+    Write-Host "The specified background image does not exist: $backgroundImagePath" -ForegroundColor Red
+    exit 1
+}
+
+# Function to set the desktop background
+function Set-DesktopBackground {
+    param (
+        [string]$imagePath
+    )
+
+    Add-Type @"
+    using System;
+    using System.Runtime.InteropServices;
+    public class Wallpaper {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+    }
+"@
+
+    $SPI_SETDESKWALLPAPER = 0x0014
+    $SPIF_UPDATEINIFILE = 0x01
+    $SPIF_SENDCHANGE = 0x02
+
+    [Wallpaper]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $imagePath, $SPIF_UPDATEINIFILE -bor $SPIF_SENDCHANGE)
+}
+
+# Set the desktop background
+Set-DesktopBackground -imagePath $backgroundImagePath
+
+Write-Host "Desktop background has been set to: $backgroundImagePath" -ForegroundColor Green
+
+# Modify Windows Terminal settings for transparency
+Write-Host "Turning Powershell Window transparent"
+# Define the path to the Windows Terminal settings JSON file
+$settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+# Read the current settings
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+
+# Define the desired transparency settings
+$desiredOpacity = 0.75
+$useAcrylic = $true
+
+# Find the PowerShell profile and update its settings
+foreach ($profile in $settings.profiles.list) {
+    if ($profile.name -eq "Windows PowerShell" -or $profile.name -eq "PowerShell") {
+        $profile.acrylicOpacity = $desiredOpacity
+        $profile.useAcrylic = $useAcrylic
+    }
+}
+
+# Convert the settings back to JSON and save the file
+$settings | ConvertTo-Json -Depth 32 | Set-Content -Path $settingsPath
+
+Write-Host "PowerShell window modification completed. Please restart Windows Terminal to apply the changes."
+
 # TODO: add programs to PATH
-# TODO: make the required programs list the one specified in the README.md. add step to load that list and use it.
 # TODO: add validation and logs
-# TODO: decide if i want to use chocolatey or winget
+# TODO: make terminal transparent
+
+# TODO: add programs to PATH
+# TODO: add validation and logs
 # TODO: make terminal transparent
 # TODO: look at other install repos to get ideas
-# TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
 # TODO: install background image and configure to use
 # TODO: try installing wsl2 ubuntu first, then installing with apt or something.
-# TODO: add log of each install
 # TODO: decide which versions to install
 # TODO: check security of all of these repos
 

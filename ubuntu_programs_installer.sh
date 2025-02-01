@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/bash
 
 chmod +x ubuntu_programs_installer.sh
 
@@ -8,7 +8,6 @@ sudo apt update -y && sudo apt upgrade -y
 
 echo "Installing Zsh"
 sudo apt install -y zsh
-
 
 echo "Installing Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -107,7 +106,7 @@ sudo apt update -y
 sudo apt install -y pgadmin4
 
 echo "Installing Remmina"
-sudo apt install -y remmina
+sudo snap install remmina
 
 echo "Installing Wine / Winetricks"
 sudo apt install -y wine winetricks
@@ -125,9 +124,9 @@ echo "Installing Postman"
 sudo snap install postman
 
 # or do echo "Installing AwesomeWM"
-# do hyprland later
-#echo "Installing Hyprland"
-#sudo apt update && sudo apt install -y \
+# hyprland install failed
+# echo "Installing Hyprland"
+# sudo apt update && sudo apt install -y \
 #    build-essential cmake meson ninja-build pkg-config \
 #    libxcb1-dev libxcb-damage0-dev libxcb-composite0-dev \
 #    libxcb-ewmh-dev libxcb-xfixes0-dev libxcb-shape0-dev \
@@ -188,67 +187,43 @@ source ~/.zshrc
 
 echo "Installing VS Code extensions:"
 # with setting sync, extensions get installed automatically
-code --install-extension formulahendry.auto-rename-tag # Auto Rename Tag
-code --install-extension ms-python.black-formatter # Black Formatter
-code --install-extension ms-azuretools.vscode-azureappservice # Azure App Service
-code --install-extension msazurermtools.azurerm-vscode-tools # Azure Resources (ARM Tools)
-code --install-extension ms-vscode.cpptools # C/C++ Intellisense
-code --install-extension streetsidesoftware.code-spell-checker # Code Spell Checker
-code --install-extension dbaeumer.vscode-eslint # ESLint
-code --install-extension tamasfe.even-better-toml # Even Better TOML
-code --install-extension ms-python.flake8 # Flake8
-code --install-extension GitHub.vscode-github-actions # Github Actions
-code --install-extension GitHub.copilot # GitHub Copilot
-code --install-extension eamodio.gitlens # gitLens
-code --install-extension oderwat.indent-rainbow # indent-rainbow
-code --install-extension ms-python.isort # isort
-code --install-extension ms-toolsai.jupyter # Jupyter
-code --install-extension ritwickdey.liveserver # Live Server
-code --install-extension ms-python.mypy-type-checker # Mypy Type Checker
-code --install-extension esbenp.prettier-vscode # Prettier
-code --install-extension ms-vscode-remote.remote-ssh # Remote - SSH
-code --install-extension wayou.vscode-todo-highlight # TODO Highlight
-code --install-extension Gruntfuggly.todo-tree # TODO Tree
-code --install-extension vscodevim.vim # Vim
-code --install-extension AndenetAlexander.vim-cheatsheet # Vim cheatsheet 
-code --install-extension GitHub.github-vscode-theme # GitHub Theme
-code --install-extension s-nlf-fh.glassit # GlassIt-VSC
-
-
-echo "Installing Gnome-Extensions"
-#echo "Installing ArcMenu"
-#sudo apt update && sudo apt install gnome-shell-extensions gnome-shell-extension-prefs gnome-shell-extension-manager chrome-gnome-shell unzip wget
-#gnome-extensions install arcmenu@arcmenu.com
-#gnome-extensions enable arcmenu@arcmenu.com
-
-#echo "Installing Blur My Shell"
-
-
-#echo "Installing Dash-To-Panel"
-
-
-#echo "Installing Color Picker"
-
-
-#echo "Installing Emoji Copy"
-
-
-
-
-# or try this
-extensions=(
-  "arcmenu@arcmenu.com"
-  "dash-to-panel@jderose9.github.com"
-  "blur-my-shell@aunetx"
-  "color-picker@tuberry"
-  "emoji-copy@felipeftn"
+vscode_extensions=(
+    formulahendry.auto-rename-tag # Auto Rename Tag
+    ms-python.black-formatter # Black Formatter
+    ms-azuretools.vscode-azureappservice # Azure App Service
+    msazurermtools.azurerm-vscode-tools # Azure Resources (ARM Tools)
+    ms-vscode.cpptools # C/C++ Intellisense
+    streetsidesoftware.code-spell-checker # Code Spell Checker
+    dbaeumer.vscode-eslint # ESLint
+    tamasfe.even-better-toml # Even Better TOML
+    ms-python.flake8 # Flake8
+    GitHub.vscode-github-actions # Github Actions
+    GitHub.copilot # GitHub Copilot
+    eamodio.gitlens # gitLens
+    oderwat.indent-rainbow # indent-rainbow
+    ms-python.isort # isort
+    ms-toolsai.jupyter # Jupyter
+    ritwickdey.liveserver # Live Server
+    ms-python.mypy-type-checker # Mypy Type Checker
+    esbenp.prettier-vscode # Prettier
+    ms-vscode-remote.remote-ssh # Remote - SSH
+    wayou.vscode-todo-highlight # TODO Highlight
+    Gruntfuggly.todo-tree # TODO Tree
+    vscodevim.vim # Vim
+    AndenetAlexander.vim-cheatsheet # Vim cheatsheet 
+    GitHub.github-vscode-theme # GitHub Theme
+    s-nlf-fh.glassit # GlassIt-VSC
 )
 
-for ext in "${extensions[@]}"; do
-  gnome-extensions install "$ext"
-  gnome-extensions enable "$ext"
+for extension in "${vscode_extensions[@]}"; do
+    code --install-extension "$extension"
 done
-
+#echo "Installing Gnome-Extensions"
+#echo "Installing ArcMenu"
+#echo "Installing Blur My Shell"
+#echo "Installing Dash-To-Panel"
+#echo "Installing Color Picker"
+#echo "Installing Emoji Copy"
 
 
 # manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
@@ -259,7 +234,6 @@ done
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: check versions to see which version and dependencies i should have (ties in to which package manager to use)
 # TODO: install background image and configure to use
-# TODO: condense redundant commands
 # TODO: check security of all of these repos
 
 

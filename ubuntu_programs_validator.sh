@@ -8,10 +8,10 @@ required_programs=(
   "runescape-launcher" nautilus blender htop unity omniverse "omniverse code" "unreal engine" steam lutris gnu "musescore" libreoffice figma-linux mysql-server pgadmin4 "davinci resolve" remmina wine winetricks xterm vim vi neovim nano gnome-tweaks postman pip "vscode extensions" gh typescript c++ g++ gdb
   "blackmagic-mediaexpress"
   "blackmagic-desktop-video" "blackmagic-diskspeed-test"
-  cuDNN tensorRT gimp "nvidia app?" pycharm-community rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
+  cuDNN tensorRT gimp pycharm-community rider webstorm "Gnome Extensions (Dash-to-Panel, ArcMenu, Blur my Shell, Color Picker, Emoji Copy)" 
 )
 
-# manually geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
+# manually install geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity, blackmagic media express, blackmagic desktop video, blackmagic disk speed test
 
 # Function to check if a program is installed
 check_command() {

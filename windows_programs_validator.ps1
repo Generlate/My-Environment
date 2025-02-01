@@ -1,6 +1,7 @@
 Write-Host "Validating installation of required programs"
-# List of required CLI-based programs
-$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "VRoidStudio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "Nvidia.NVIDIA Omniverse Launcher", "omniverse code", "Kit", "EpicGamesLauncher", "steam", "googleearth", "MuseScore.MuseScore", "figma", "vite", "mysql workbench", "pgadmin4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server", "blender", "devenv", "Nvidia.GeForceNow", "Nvidia.CUDA", "wiztree", "Perforce.P4V", "MinecraftLauncher", "figma", "logitune") 
+
+# List of required CLI-based programs and applications
+$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chromium", "firefox", "firefox-dev", "OBSstudio", "vlc", "discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "VRoidStudio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "Nvidia.NVIDIA Omniverse Launcher", "omniverse code", "Kit", "EpicGamesLauncher", "steam", "googleearth", "MuseScore.MuseScore", "figma", "vite", "mysql workbench", "pgadmin4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server", "blender-launcher", "devenv", "Nvidia.GeForceNow", "Nvidia.CUDA", "wiztree", "Perforce.P4V", "MinecraftLauncher", "figma", "logitune")
 
 # Function to check if a CLI command exists
 function Check-Command($command) {
@@ -11,28 +12,26 @@ function Check-Command($command) {
     }
 }
 
+# Function to check if an application is installed from the Windows Registry
+function Check-App($app) {
+    $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"
+    if (Get-ItemProperty -Path $registryPath | Where-Object { $_.DisplayName -like "*$app*" }) {
+        return $true
+    } else {
+        return $false
+    }
+}
+
 # Arrays to store installed and missing programs
 $installedPrograms = @()
 $missingPrograms = @()
 
-# Check CLI-based programs
+# Check CLI-based programs and installed applications
 foreach ($program in $requiredPrograms) {
-    if (Check-Command $program) {
+    if (Check-Command $program -or Check-App $program) {
         $installedPrograms += $program
     } else {
         $missingPrograms += $program
-    }
-}
-
-# Check installed applications from the Windows Registry
-$requiredApps = @("Google Chrome", "code", "python")
-$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"
-
-foreach ($app in $requiredApps) {
-    if (Get-ItemProperty -Path $registryPath | Where-Object { $_.DisplayName -like "*$app*" }) {
-        $installedPrograms += $app
-    } else {
-        $missingPrograms += $app
     }
 }
 
@@ -57,6 +56,3 @@ if ($missingPrograms.Count -gt 0) {
 } else {
     exit 0
 }
-
-
-# why is there required apps and required programs?
