@@ -247,5 +247,7 @@ echo "GNOME Terminal window modification completed. Please restart GNOME Termina
 # TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks/extensions
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: configure shell to not have a line limit
+# TODO: figure out why apt connection to dns messed up
+# these programs didn't install or validate correctly: nodejs, code, oh-my-zsh, google-chrome-stable, firefox-dev, blender, omniverse, gnu, musescore, mysql-server, pgadmin4, xterm, neovim, postman, vscode extensions, typescript, cuDNN, tensorRT, Gnome Extensions
 
 ./ubuntu_programs_validator.sh

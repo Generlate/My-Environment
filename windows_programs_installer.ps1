@@ -300,7 +300,6 @@ Write-Host "Turning powershell Terminal window transparent"
 # couldnt figure out how to do this
 
 # TODO: add programs to PATH
-# TODO: add validation and logs
 # TODO: install background image and configure to use
 # TODO: make terminal transparent
 # TODO: look at other install repos to get ideas

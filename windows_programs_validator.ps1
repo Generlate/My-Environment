@@ -1,7 +1,7 @@
 Write-Host "Validating installation of required programs"
 
 # List of required CLI-based programs and applications
-$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chrome", "firefox", "firefox", "obs64", "vlc", "Discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "VRoidStudio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "Nvidia.NVIDIA Omniverse Launcher", "omniverse code", "Kit", "EpicGamesLauncher", "steam", "googleearth", "MuseScore4", "figma", "vite", "mysql workbench", "pgadmin4", "davinci resolve", "zoom", "vim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server", "blender-launcher", "devenv", "Nvidia.GeForceNow", "Nvidia.CUDA", "wiztree", "p4v", "MinecraftLauncher", "figma", "LogiTune")
+$requiredPrograms = @("git", "node", "python", "code", "microsoft edge", "chrome", "firefox", "firefox", "obs64", "vlc", "Discord", "runescape", "autocad", "illustrator", "indesign", "sketchup", "rhino", "msi center", "atem software control", "blackmagic media express", "blackmagic desktop video", "blackmagic disk speed test", "VRoidStudio", "genshin impact", "hoyoplay", "id mixer", "fl studio 20", "komplete kontrol", "kontakt", "native access", "Nvidia.NVIDIA Omniverse Launcher", "omniverse code", "Kit", "EpicGamesLauncher", "steam", "googleearth", "MuseScore4", "figma", "vite", "mysql workbench", "pgadmin4", "davinci resolve", "zoom", "gvim", "nvim", "nano", "postman", "pip", "typescript", "c++", ".NET", "davinci resolve project server", "blender-launcher", "devenv", "Nvidia.GeForceNow", "Nvidia.CUDA", "wiztree", "p4v", "MinecraftLauncher", "figma", "LogiTune")
 
 # Function to check if a CLI command exists
 function Check-Command($command) {
@@ -57,5 +57,3 @@ if ($missingPrograms.Count -gt 0) {
     exit 0
 }
 
-
-# these programs didn't validate correctly: node, vscode, msedge, chromium, firefox-dev, obs studio, omniverse, omniverse code, musescore, vite, mysql, vim, nano, typescript, c++, .NET, devenv (visual studio), cuda, p4v and logitune

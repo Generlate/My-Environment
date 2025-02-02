@@ -1,3 +1,63 @@
+Ubuntu Server Setup <br>
+Ubuntu Server == <br>
+python3 == <br>
+terminator == <br>
+zsh == <br>
+(configure with Oh-My-Zsh and powerlevel10k)
+microsoft-edge == <br>
+chromium == <br>
+firefox == <br>
+firefox-dev == <br>
+nautilus == 45.rc <br>
+htop == 3.2.2 <br>
+Unreal Engine == 5.3 <br>
+gnu == 2.10.36 <br>
+mysql-server == 8.0.36 <br>
+pgadmin4 == <br>
+remmina == 1.4.31 <br>
+wine == <br>
+winetricks == 8.0.1 <br>
+xterm == <br>
+vim == 9.0 <br>
+nvim == 9.0 <br>
+gnome-tweaks == 42.beta <br>
+postman == 10.23.0<br>
+python3-pip == 23.1.2
+gh == <br>
+typescript == <br>
+nsight == <br>
+CUDA == <br>
+cuDNN == <br>
+tensorRT == <br>
+nvidia app == <br>
+gefore experience == <br>
+cmake == 3.28.3 <br>
+cpp == <br>
+git == 2.40.1 <br>
+nodejs == <br>
+grafana == <br>
+nextcloud? == <br>
+django == <br>
+postgresql == <br>
+next.js == <br>
+react.js == <br>
+proxmox == <br>
+docker == <br>
+qemu | vmware esxi == <br>
+jenkins == <br>
+perforce helix core == <br>
+llama == <br>
+pytorch == <br>
+nginx == <br>
+gunicorn == <br>
+cloudflare == <br>
+<br>
+Extensions <br>
+Dash-to-Panel == 60 <br>
+ArcMenu == 56 <br>
+Blur my shell == 58 <br>
+<br>
+
 Ubuntu Setup <br>
 Ubuntu == 23.10 <br>
 python3 == 3.11.0 <br>
