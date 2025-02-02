@@ -1,19 +1,13 @@
 #!/usr/bin/bash
 
 chmod +x ubuntu_programs_installer.sh
+chmod +x ubuntu_programs_validator.sh
 
 echo "Update & upgrade system"
 sudo add-apt-repository universe -y
 sudo apt update -y && sudo apt upgrade -y
 
-echo "Installing Zsh"
-sudo apt install -y zsh
 
-echo "Installing Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# note to self: check my current .zshrc and figure out how to add that to this script
-echo "Installing powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
 echo "Installing Basic developer tools"
 sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
@@ -180,7 +174,7 @@ echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft
 rm -f packages.microsoft.gpg
 sudo apt install apt-transport-https
 sudo apt update
-sudo apt install code 
+sudo snap install code 
 source ~/.zshrc
 
 echo "Installing VS Code extensions:"
@@ -243,11 +237,23 @@ gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/Terminal/Legacy/Prof
 
 echo "GNOME Terminal window modification completed. Please restart GNOME Terminal to apply the changes."
 
+echo "Installing Zsh"
+sudo apt install -y zsh
+
+echo "Installing Oh-My-Zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# note to self: check my current .zshrc and figure out how to add that to this script
+echo "Installing powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+# changes shell to zsh
+chsh -s /usr/bin/zsh
+
 # TODO: figure out gnome extensions
 # TODO: make terminator terminal transparent by editing config, manually or gnome-tweaks/extensions
 # TODO: add a validation step that checks if all packages are installed and reports which aren't
 # TODO: configure shell to not have a line limit
 # TODO: figure out why apt connection to dns messed up
 # these programs didn't install or validate correctly: nodejs, code, oh-my-zsh, google-chrome-stable, firefox-dev, blender, omniverse, gnu, musescore, mysql-server, pgadmin4, xterm, neovim, postman, vscode extensions, typescript, cuDNN, tensorRT, Gnome Extensions
+# don't accept switch to zsh or change shebangs
 
 ./ubuntu_programs_validator.sh

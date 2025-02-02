@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-chmod +x ubuntu_programs_validator.sh
 echo "Validating whether the programs were installed properly"
 required_programs=(
   git nodejs python3 code terminator zsh Oh-My-Zsh microsoft-edge-stable 
