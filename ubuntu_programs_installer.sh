@@ -9,8 +9,8 @@ sudo apt update -y && sudo apt upgrade -y
 
 
 
-echo "Installing Basic developer tools"
-sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
+# echo "Installing Basic developer tools"
+# sudo apt install -y gnupg lsb-release software-properties-common apt-transport-https ca-certificates
 
 echo "Installing Terminator"
 sudo apt install -y terminator
