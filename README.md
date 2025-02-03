@@ -60,7 +60,7 @@ ArcMenu == 56 <br>
 Blur my shell == 58 <br>
 <br>
 
-#################################################
+################################################# <br>
 <br>
 Ubuntu Setup <br>
 Ubuntu == 23.10 <br>
@@ -167,12 +167,8 @@ vscodvim.vim == 1.27.2 <br>
 shakram02.vim-cheatsheet == 0.0.1 <br>
 GitHub.github-vscode-theme == 6.3.4 <br>
 gabrielgrinberg.glassit == 0.2.6 <br>
-
 <br>
-<br>
-<br>
-
-#################################################
+################################################# <br>
 <br>
 Windows Setup <br>
 Windows == 11 <br>
@@ -281,6 +277,7 @@ cpp == 13.2.0 <br>
 venv with python 3.11 in it at home directory
 /home/templates/text_file to make text files with right click
 <br>
+<br>
 #################################################
 
-[comment]: TODO: add backend + frontend server config
+<!--- TODO: add backend + frontend server config -->
