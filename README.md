@@ -1,4 +1,5 @@
 #################################################
+<br>
 Ubuntu Server Setup <br>
 Ubuntu Server == <br>
 python3 == <br>
@@ -60,7 +61,7 @@ Blur my shell == 58 <br>
 <br>
 
 #################################################
-
+<br>
 Ubuntu Setup <br>
 Ubuntu == 23.10 <br>
 python3 == 3.11.0 <br>
@@ -172,7 +173,7 @@ gabrielgrinberg.glassit == 0.2.6 <br>
 <br>
 
 #################################################
-
+<br>
 Windows Setup <br>
 Windows == 11 <br>
 (manually install AutoCad, sketchup, rhino, photoshop, illustrator, indesign) <br>
@@ -279,7 +280,7 @@ cpp == 13.2.0 <br>
 
 venv with python 3.11 in it at home directory
 /home/templates/text_file to make text files with right click
-
+<br>
 #################################################
 
 [comment]: TODO: add backend + frontend server config
