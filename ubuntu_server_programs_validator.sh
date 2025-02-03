@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 echo "Validating whether the programs were installed properly"
-
-# Read the list of programs from README.md
-required_programs=($(grep -oP '(?<= == ).*' README.md))
+required_programs=( terminator nautilus git gh python3 pip microsoft-edge-stable google-chrome-stable firefox firefox-dev cmake mysql-server pgadmin4 docker cmake mysql-server wine winetricks neovim gnome-tweaks postman c++ cmake make gdb nodejs npm typescript gnu vim nsight cuda cudnn tensorrt "nvidia app" next-cloud django nextjs reactjs proxmox qemu jenkins p4v llama pytorch gunicorn cloudflare )
 
 # Function to check if a program is installed
 check_command() {
