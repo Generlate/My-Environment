@@ -95,12 +95,17 @@ sudo npm install -g typescript
 
 echo "Installing gnu"
 echo "Installing VIM"
+sudo apt install vim
 echo "Installing nsight"
+sudo apt install nsight-compute?
 echo "Installing cuda"
+sudo apt install nvidia-cuda-toolkit
 echo "Installing cuDNN"
+sudo apt install nvidia-cudnn
 echo "Installing tensorRT"
 echo "Installing nvidia app"
 echo "Installing nextcloud"
+sudo apt install nextcloud-desktop
 echo "Installing Django"
 echo "Installing Next.js"
 echo "Installing React"
@@ -111,7 +116,9 @@ echo "Installing perforce helix cloud | p4v"
 echo "Installing llama"
 echo "Installing pytorch"
 echo "Installing gunicorn"
+sudo apt install gunicorn
 echo "Installing cloudflare"
+sudo apt install cloudlfare-ddns
 
 echo "Installing VS Code"
 sudo apt-get install wget gpg
