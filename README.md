@@ -58,6 +58,7 @@ Extensions <br>
 Dash-to-Panel == 60 <br>
 ArcMenu == 56 <br>
 Blur my shell == 58 <br>
+Auto Move Windows == <br>
 <br>
 
 ################################################# <br>
@@ -136,6 +137,7 @@ ArcMenu == 56 <br>
 Blur my shell == 58 <br>
 Color Picker == 40 <br>
 Emoji Copy == 21 <br>
+Auto Move Windows == <br>
 <br>
 VsCode Extensions <br>
 formulhendry.auto-rename-tag == 0.1.10 <br>

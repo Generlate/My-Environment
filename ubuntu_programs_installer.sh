@@ -214,6 +214,7 @@ done
 #echo "Installing Dash-To-Panel"
 #echo "Installing Color Picker"
 #echo "Installing Emoji Copy"
+#echo "Installing Auto Move Windows"
 
 # manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
