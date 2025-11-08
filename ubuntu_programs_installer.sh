@@ -215,6 +215,7 @@ done
 #echo "Installing Color Picker"
 #echo "Installing Emoji Copy"
 #echo "Installing Auto Move Windows"
+#echo "Installing Tactile"
 
 # manually install unreal engine, geforce experience, google-earth-pro, zoom, nsight, cuda, cudnn, unity
 
